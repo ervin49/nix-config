@@ -35,6 +35,8 @@ in
         jetbrains.clion
         vesktop
         obsidian
+        tridactyl-native
+        inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
         kdePackages.gwenview 
     ];
     programs.gh = {
@@ -147,6 +149,7 @@ in
         ".config/DankMaterialShell".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/DankMaterialShell";
         ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/p10k.zsh";
         ".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ideavimrc";
+        ".zen/native-messaging-hosts/tridactyl.json".source = "${pkgs.tridactyl-native}/lib/mozilla/native-messaging-hosts/tridactyl.json";
     };
 
     programs.kitty = {
@@ -200,8 +203,8 @@ in
         }];
         packages = [
             "eu.betterbird.Betterbird" 
-            "app.zen_browser.zen"
         ];
+        uninstallUnmanaged = true;
         update.onActivation = true;
     };
 

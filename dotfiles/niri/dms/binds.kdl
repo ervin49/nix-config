@@ -7,7 +7,7 @@ binds {
     // === Application Launchers ===
     Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Mod+E hotkey-overlay-title="Open File Manager" { spawn "thunar"; }
-    Mod+B hotkey-overlay-title="Open Chromium" { spawn "app.zen_browser.zen"; }
+    Mod+B hotkey-overlay-title="Open Zen" { spawn "zen"; }
     Mod+R hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
