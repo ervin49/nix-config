@@ -1,0 +1,9 @@
+{
+  "dankBatteryAlerts": {
+    "enabled": true,
+    "warningThreshold": 20,
+    "criticalThreshold": 10,
+    "enableWarningAlert": true,
+    "enableCriticalAlert": true
+  }
+}

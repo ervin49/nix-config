@@ -1,0 +1,3 @@
+return {
+    'ja-ford/delaytrain.nvim',
+}
