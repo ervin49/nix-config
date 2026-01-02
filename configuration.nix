@@ -5,119 +5,118 @@
 { config, pkgs, inputs, ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    imports =
+        [ # Include the results of the hardware scan.
+            ./hardware-configuration.nix
+        ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;
+    # Bootloader.
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  hardware.bluetooth.enable = true;
+    networking.hostName = "nixos"; # Define your hostname.
+    networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Bucharest";
+    hardware.bluetooth.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+    # Set your time zone.
+    time.timeZone = "Europe/Bucharest";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ro_RO.UTF-8";
-    LC_IDENTIFICATION = "ro_RO.UTF-8";
-    LC_MEASUREMENT = "ro_RO.UTF-8";
-    LC_MONETARY = "ro_RO.UTF-8";
-    LC_NAME = "ro_RO.UTF-8";
-    LC_NUMERIC = "ro_RO.UTF-8";
-    LC_PAPER = "ro_RO.UTF-8";
-    LC_TELEPHONE = "ro_RO.UTF-8";
-    LC_TIME = "ro_RO.UTF-8";
-  };
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Define a user account.
-  users = {
-    users.ervin = {
-      isNormalUser = true;
-      description = "ervin";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [];
+    i18n.extraLocaleSettings = {
+        LC_ADDRESS = "ro_RO.UTF-8";
+        LC_IDENTIFICATION = "ro_RO.UTF-8";
+        LC_MEASUREMENT = "ro_RO.UTF-8";
+        LC_MONETARY = "ro_RO.UTF-8";
+        LC_NAME = "ro_RO.UTF-8";
+        LC_NUMERIC = "ro_RO.UTF-8";
+        LC_PAPER = "ro_RO.UTF-8";
+        LC_TELEPHONE = "ro_RO.UTF-8";
+        LC_TIME = "ro_RO.UTF-8";
     };
-    defaultUserShell = pkgs.zsh;
-  };
 
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
+    # Configure keymap in X11
+    services.xserver.xkb = {
+        layout = "us";
+        variant = "";
+    };
 
-  services.getty.autologinUser = "ervin";
-  nixpkgs.config.allowUnfree = true;
+    # Define a user account.
+    users = {
+        users.ervin = {
+            isNormalUser = true;
+            description = "ervin";
+            extraGroups = [ "networkmanager" "wheel" ];
+            packages = with pkgs; [];
+        };
+        defaultUserShell = pkgs.zsh;
+    };
 
-  fonts.packages = with pkgs; [
-    _0xproto
-    meslo-lgs-nf
-  ];
+    security.sudo = {
+        enable = true;
+        wheelNeedsPassword = false;
+    };
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    kitty
-    lua-language-server
-    unzip
-    brightnessctl
-    zsh-powerlevel10k
-    gcc
-    clang
-    xwayland-satellite
-    greetd
-    
-  ];
+    services.getty.autologinUser = "ervin";
+    nixpkgs.config.allowUnfree = true;
 
-
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
+    fonts.packages = with pkgs; [
+        _0xproto
+        meslo-lgs-nf
     ];
-  };
 
-  programs.zsh.enable = true;
-  programs.dms-shell.enable = true;
-  programs.xwayland.enable = true;
-  programs.niri.enable = true;
+    environment.systemPackages = with pkgs; [
+        neovim
+        kitty
+        lua-language-server
+        unzip
+        brightnessctl
+        zsh-powerlevel10k
+        gcc
+        clang
+        xwayland-satellite
+        greetd
 
-  # thunar
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
+    ];
 
-  # dms greeter
-  services.xserver.enable = true;
-  
-  services.displayManager.dms-greeter = {
-    enable = true;
-    compositor.name = "niri";
-  };
 
-  # Power Management
-  services.upower.enable = true;
+    programs.thunar = {
+        enable = true;
+        plugins = with pkgs; [
+            thunar-archive-plugin
+            thunar-volman
+        ];
+    };
 
-  services.flatpak.enable = true;
+    programs.zsh.enable = true;
+    programs.dms-shell.enable = true;
+    programs.xwayland.enable = true;
+    programs.niri.enable = true;
 
-  # Environment variables
-  environment.variables = {
-    YSU_HARDCORE = "1";
-  };
+    # thunar
+    services.gvfs.enable = true;
+    services.udisks2.enable = true;
 
-  system.stateVersion = "25.05"; 
+    # dms greeter
+    services.xserver.enable = true;
+    services.displayManager.dms-greeter = {
+        enable = true;
+        compositor.name = "niri";
+    };
+
+    # Power Management
+    services.upower.enable = true;
+
+    services.flatpak.enable = true;
+
+    # Environment variables
+    environment.variables = {
+        YSU_HARDCORE = "1";
+    };
+
+    system.stateVersion = "25.05"; 
 }

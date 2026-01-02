@@ -36,7 +36,7 @@ in
         vesktop
         obsidian
         tridactyl-native
-        inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+        (inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default.override {nativeMessagingHosts = [ pkgs.tridactyl-native ];})
         kdePackages.gwenview 
     ];
     programs.gh = {
@@ -149,7 +149,7 @@ in
         ".config/DankMaterialShell".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/DankMaterialShell";
         ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/p10k.zsh";
         ".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ideavimrc";
-        ".zen/native-messaging-hosts/tridactyl.json".source = "${pkgs.tridactyl-native}/lib/mozilla/native-messaging-hosts/tridactyl.json";
+        ".config/tridactyl/tridactylrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tridactylrc";
     };
 
     programs.kitty = {
@@ -192,6 +192,7 @@ in
     };
 
     home.sessionVariables = {
+        MOZ_NATIVE_MESSAGING_HOSTS = "${homeDirectory}/.mozilla/native-messaging-hosts";
         EDITOR = "nvim";
     };
 
