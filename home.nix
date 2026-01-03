@@ -35,8 +35,7 @@ in
         jetbrains.clion
         vesktop
         obsidian
-        tridactyl-native
-        (inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default.override {nativeMessagingHosts = [ pkgs.tridactyl-native ];})
+        inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
         kdePackages.gwenview 
     ];
     programs.gh = {
@@ -149,7 +148,6 @@ in
         ".config/DankMaterialShell".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/DankMaterialShell";
         ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/p10k.zsh";
         ".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ideavimrc";
-        ".config/tridactyl/tridactylrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tridactylrc";
     };
 
     programs.kitty = {
