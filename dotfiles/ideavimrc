@@ -11,6 +11,7 @@ set scrolloff=5
 
 " Do incremental searching.
 set incsearch
+set ic
 set relativenumber
 
 " Don't use Ex mode, use Q for formatting.

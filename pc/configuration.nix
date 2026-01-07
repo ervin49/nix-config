@@ -37,7 +37,7 @@
         LC_PAPER = "ro_RO.UTF-8";
         LC_TELEPHONE = "ro_RO.UTF-8";
         LC_TIME = "ro_RO.UTF-8";
-    };
+    };  
 
     # Configure keymap in X11
     services.xserver.xkb = {
