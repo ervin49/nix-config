@@ -115,8 +115,8 @@ in
             ls = "eza";
             ll = "eza -l";
             nc = "nh clean all";
-            nu = "cd ~/.nix-config && nh os switch . --update && ga . && gc -m \"Update: ${osConfig.networking.hostName} - $(nixos-version)\" && gp";
-            n = "cd ~/.nix-config && nh os switch . && ga . && gc -m \"Rebuild: ${osConfig.networking.hostName} - $(nixos-version)\" && gp";
+            nu = "cd ~/.nix-config && nh os switch . --update && ga . && gc -m \"Update: ${osConfig.networking.hostName} - $(date +'%Y-%m-%d %H:%M')\" && gp";
+            n = "cd ~/.nix-config && nh os switch . && ga . && gc -m \"Rebuild: ${osConfig.networking.hostName} - $(date +'%Y-%m-%d %H:%M')\" && gp";
             ns = "nh search";
         };
         initContent = ''
