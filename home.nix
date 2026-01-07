@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, inputs,osConfig, ... }:
 
 let
     dotfiles = "/home/ervin/.nix-config/dotfiles";
@@ -115,8 +115,8 @@ in
             ls = "eza";
             ll = "eza -l";
             nc = "nh clean all";
-            nu = "nh os switch ~/.nix-config --update";
-            n = "cd ~/.nix-config && nh os switch && ga . && gc -m \"idk\" && gp";
+            nu = "cd ~/.nix-config/ && nh os switch --update && ga . && gc -m \"Update: ${osConfig.networking.hostName} - ${osConfig.system.nixos.label}\" && gp";
+            n = "cd ~/.nix-config && nh os switch && ga . && gc -m \"Rebuild: ${osConfig.networking.hostName} - ${osConfig.system.nixos.label}\" && gp";
             ns = "nh search";
         };
         initContent = ''
