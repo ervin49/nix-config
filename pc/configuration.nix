@@ -80,6 +80,7 @@
         clang
         xwayland-satellite
         greetd
+        ungoogled-chromium
 
     ];
 
@@ -127,6 +128,20 @@
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
+    environment.etc."chromium/policies/managed/default.json".text = builtins.toJSON {
+        DefaultSearchProviderEnabled = true;
+        DefaultSearchProviderName = "StartPage";
+        DefaultSearchProviderKeyword = "sp";
+        DefaultSearchProviderSearchURL = "https://www.startpage.com/sp/search?query={searchTerms}";
+    };
+
+    hardware.keyboard.qmk.enable = true;
+
+    services.udev.extraRules = ''
+    # Keychron Universal Rule
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+    '';
 
     system.stateVersion = "25.05"; 
 }
