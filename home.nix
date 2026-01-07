@@ -116,7 +116,7 @@ in
             ll = "eza -l";
             nc = "nh clean all";
             nu = "nh os switch ~/.nix-config --update";
-            n = "nh os switch ~/.nix-config";
+            n = "cd ~/.nix-config && nh os switch && ga . && gc -m \"idk\" && gp";
             ns = "nh search";
         };
         initContent = ''
