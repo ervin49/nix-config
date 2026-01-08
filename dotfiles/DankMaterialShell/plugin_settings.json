@@ -5,5 +5,9 @@
     "criticalThreshold": 10,
     "enableWarningAlert": true,
     "enableCriticalAlert": true
+  },
+  "webSearch": {
+    "enabled": true,
+    "searchEngines": []
   }
 }

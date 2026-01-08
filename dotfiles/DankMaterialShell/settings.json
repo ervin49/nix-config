@@ -14,7 +14,7 @@
   "useFahrenheit": false,
   "nightModeEnabled": false,
   "animationSpeed": 1,
-  "customAnimationDuration": 500,
+  "customAnimationDuration": 200,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
