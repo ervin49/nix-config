@@ -80,8 +80,6 @@
         clang
         xwayland-satellite
         greetd
-        ungoogled-chromium
-
     ];
 
 
@@ -127,13 +125,6 @@
         open = false;
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
-
-    environment.etc."chromium/policies/managed/default.json".text = builtins.toJSON {
-        DefaultSearchProviderEnabled = true;
-        DefaultSearchProviderName = "StartPage";
-        DefaultSearchProviderKeyword = "sp";
-        DefaultSearchProviderSearchURL = "https://www.startpage.com/sp/search?query={searchTerms}";
     };
 
     hardware.keyboard.qmk.enable = true;

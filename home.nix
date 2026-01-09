@@ -37,6 +37,7 @@ in
         obsidian
         inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
         kdePackages.gwenview 
+        brave
     ];
     programs.gh = {
         enable = true;
