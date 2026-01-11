@@ -1,19 +1,19 @@
 local function compile_and_run_terminal()
-  vim.cmd('write')
-  vim.cmd('vsplit | terminal bash -c "g++ ' ..
-  vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. ' && ./' .. vim.fn.expand('%:r') .. '"')
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-\\><C-n>', true, true, true), 't', true)
-  vim.api.nvim_feedkeys('i', 't', true)
+    vim.cmd('write')
+    vim.cmd('vsplit | terminal bash -c "g++ ' ..
+        vim.fn.expand('%') .. ' -o ' .. vim.fn.expand('%:r') .. ' && ./' .. vim.fn.expand('%:r') .. '"')
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-\\><C-n>', true, true, true), 't', true)
+    vim.api.nvim_feedkeys('i', 't', true)
 end
 
 
 vim.api.nvim_create_user_command('CompileAndRunTerminal', compile_and_run_terminal, {})
 
 function compile_and_run_java()
-  vim.cmd('write')
-  vim.cmd('vsplit | terminal bash -c "java ' .. vim.fn.expand('%') .. '"')
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-\\><C-n>', true, true, true), 't', true)
-  vim.api.nvim_feedkeys('i', 't', true)
+    vim.cmd('write')
+    vim.cmd('vsplit | terminal bash -c "java ' .. vim.fn.expand('%') .. '"')
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-\\><C-n>', true, true, true), 't', true)
+    vim.api.nvim_feedkeys('i', 't', true)
 end
 
 vim.api.nvim_create_user_command('CompileAndRunJava', compile_and_run_java, {})

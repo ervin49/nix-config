@@ -115,7 +115,6 @@
 
     #environment variables
     environment.variables = {
-        YSU_HARDCORE = "1";
     };
 
     #nvidia drivers
