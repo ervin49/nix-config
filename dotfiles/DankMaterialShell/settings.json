@@ -253,16 +253,15 @@
       ],
       "rightWidgets": [
         {
-          "id": "battery",
-          "enabled": true
-        },
-        "controlCenterButton",
-        {
           "id": "notificationButton",
           "enabled": true
         },
         {
-          "id": "colorPicker",
+          "id": "battery",
+          "enabled": true
+        },
+        {
+          "id": "controlCenterButton",
           "enabled": true
         }
       ],
