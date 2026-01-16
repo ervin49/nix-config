@@ -32,7 +32,7 @@ in
         #gui apps
         zathura
         dbeaver-bin
-        jetbrains.clion
+        jetbrains-toolbox
         vesktop
         obsidian
         inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
