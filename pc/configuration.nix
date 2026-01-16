@@ -137,5 +137,10 @@
         "fs.inotify.max_user_watches" = 524288;
     };
 
+    hardware.graphics = {
+        enable = true;
+        enable32Bit = true; 
+    };
+
     system.stateVersion = "25.05"; 
 }
