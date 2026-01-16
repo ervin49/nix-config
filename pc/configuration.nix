@@ -133,5 +133,9 @@
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
     '';
 
+    boot.kernel.sysctl = {
+        "fs.inotify.max_user_watches" = 524288;
+    };
+
     system.stateVersion = "25.05"; 
 }
