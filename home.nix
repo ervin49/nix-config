@@ -119,11 +119,6 @@ in
         };
         initContent = ''
             [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-            if [ -z "$TMUX" ]
-            then
-                tmux attach -t TMUX || tmux new -s TMUX
-            fi
-
         '';
     };
 
@@ -164,7 +159,14 @@ in
                     style = "Regular";
                 };
             };
-        };
+            terminal.shell = {
+                program = "${pkgs.bash}/bin/bash";
+                args = [ 
+                        "-c" 
+                        "${pkgs.tmux}/bin/tmux new-session -A -s main; zsh" 
+                    ];
+                };
+            };
     };
 
     home.sessionVariables = {
