@@ -4,6 +4,7 @@ let
     dotfiles = "/home/ervin/.nix-config/dotfiles";
     username = "ervin";
     homeDirectory = "/home/ervin";
+    isDesktop = osConfig.networking.hostName == "nixp";
 in
     {
     home = {
@@ -39,6 +40,7 @@ in
         kdePackages.gwenview 
         brave
     ];
+
     programs.gh = {
         enable = true;
 
@@ -98,11 +100,6 @@ in
                 src = pkgs.zsh-powerlevel10k;
                 file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
             }
-            {
-                name = "you-should-use";
-                src = pkgs.zsh-you-should-use;
-                file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
-            }
         ];
         oh-my-zsh = {
             enable = true;
@@ -153,10 +150,19 @@ in
 
     programs.alacritty = {
         enable = true;
+
+        settings = {
+            font = {
+                size = if isDesktop then 14.0 else 16.0;
+                normal = {
+                    family = "0xProto";
+                    style = "Regular";
+                };
+            };
+        };
     };
 
     home.sessionVariables = {
-        MOZ_NATIVE_MESSAGING_HOSTS = "${homeDirectory}/.mozilla/native-messaging-hosts";
         EDITOR = "nvim";
     };
 

@@ -199,6 +199,7 @@ window-rule {
 window-rule {
     match app-id="zen"
     match app-id="Alacritty"
+    match app-id="jetbrains-clion"
     draw-border-with-background false
     open-maximized true
 }

@@ -114,7 +114,6 @@
 
     # Environment variables
     environment.variables = {
-        YSU_HARDCORE = "1";
     };
     hardware.keyboard.qmk.enable = true;
 
