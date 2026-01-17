@@ -118,7 +118,10 @@ in
             ns = "nh search";
         };
         initContent = ''
-      [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+            [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+            if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+              tmux new-session -A -s main
+            fi
         '';
     };
 
