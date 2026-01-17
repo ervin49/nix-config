@@ -19,13 +19,13 @@ return {
     ]],
                 },
                 {
-                    name = "tokyonight",
-                    colorscheme = "tokyonight",
+                    name = "jetbrains",
+                    colorscheme = "jb",
                     before = [[
       vim.opt.background = "dark"
     ]],
                     after = [[-- Same as before, but after if you need it]]
-                }},
+                } },
         })
     end
 }

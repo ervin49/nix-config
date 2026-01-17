@@ -1,26 +1,38 @@
--- Code Tree Support / Syntax Highlighting
 return {
-  -- https://github.com/nvim-treesitter/nvim-treesitter
   'nvim-treesitter/nvim-treesitter',
-  event = 'VeryLazy',
+  lazy = false,         -- se încarcă imediat
+  build = ':TSUpdate',  -- construiește parser-ele
   dependencies = {
-    -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      after = 'nvim-treesitter',  -- se încarcă după Treesitter
+    },
   },
-  build = ':TSUpdate',
   opts = {
-    highlight = {
-      enable = true,
-    },
+    highlight = { enable = true },
     indent = { enable = true },
-    auto_install = true, -- automatically install syntax support when entering new file type buffer
-    ensure_installed = {
-      'lua',
+    ensure_installed = { 'lua', 'c', 'cpp' },
+    textobjects = {
+      select = {
+        enable = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+        },
+      },
     },
   },
-  config = function (_, opts)
-    local configs = require("nvim-treesitter.configs")
-    configs.setup(opts)
-  end
+  config = function(_, opts)
+    vim.schedule(function()  -- rulează config-ul după ce runtimepath e gata
+      local ok, configs = pcall(require, "nvim-treesitter.configs")
+      if ok then
+        configs.setup(opts)
+      else
+        vim.notify("nvim-treesitter not found in runtimepath!", vim.log.levels.ERROR)
+      end
+    end)
+  end,
 }
 

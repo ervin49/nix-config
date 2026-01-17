@@ -1,45 +1,49 @@
-{ lib, config, pkgs, inputs,osConfig, ... }:
+{lib, config, pkgs, inputs, osConfig, ... }:
 
 let
-    dotfiles = "/home/ervin/.nix-config/dotfiles";
-    username = "ervin";
-    homeDirectory = "/home/ervin";
-    isDesktop = osConfig.networking.hostName == "nixp";
+dotfiles = "/home/ervin/.nix-config/dotfiles";
+username = "ervin";
+homeDirectory = "/home/ervin";
+isDesktop = osConfig.networking.hostName == "nixp";
 in
-    {
+{
+    imports = [
+        ./nvf.nix
+    ];
+
     home = {
         inherit username homeDirectory;
         stateVersion = "24.11";
     };
 
     home.packages = with pkgs; [
-        #cli tools
+#cli tools
         ripgrep
-        bat
-        fzf
-        tmux
-        gh
-        maven
-        nh
-        libnotify
-        python3
-        matugen
-        wl-clipboard
-        clang-tools
-        tldr
-        cargo
-        eza
+            bat
+            fzf
+            tmux
+            gh
+            maven
+            nh
+            libnotify
+            python3
+            matugen
+            wl-clipboard
+            clang-tools
+            tldr
+            cargo
+            eza
 
-        #gui apps
-        zathura
-        dbeaver-bin
-        jetbrains-toolbox
-        vesktop
-        obsidian
-        inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
-        kdePackages.gwenview 
-        brave
-    ];
+#gui apps
+            zathura
+            dbeaver-bin
+            jetbrains-toolbox
+            vesktop
+            obsidian
+            inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+            kdePackages.gwenview 
+            brave
+            ];
 
     programs.gh = {
         enable = true;
@@ -50,7 +54,6 @@ in
             editor = "vim"; 
         };
     };
-
 
     programs.zoxide = {
         enable = true;
@@ -95,11 +98,11 @@ in
         syntaxHighlighting.enable = true;
         autosuggestion.enable = true;
         plugins = [
-            {
-                name = "powerlevel10k";
-                src = pkgs.zsh-powerlevel10k;
-                file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-            }
+        {
+            name = "powerlevel10k";
+            src = pkgs.zsh-powerlevel10k;
+            file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        }
         ];
         oh-my-zsh = {
             enable = true;
@@ -119,7 +122,7 @@ in
         };
         initContent = ''
             [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-        '';
+            '';
     };
 
     gtk = {
@@ -138,7 +141,6 @@ in
     };
 
     home.file = {
-        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
         ".tmux".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux";
         ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux.conf";
         ".tmux.conf.local".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux.conf.local";
@@ -162,11 +164,11 @@ in
             terminal.shell = {
                 program = "${pkgs.bash}/bin/bash";
                 args = [ 
-                        "-c" 
-                        "${pkgs.tmux}/bin/tmux new-session -A -s main; zsh" 
-                    ];
-                };
+                    "-c" 
+                    "${pkgs.tmux}/bin/tmux new-session -A -s main; zsh" 
+                ];
             };
+        };
     };
 
     home.sessionVariables = {

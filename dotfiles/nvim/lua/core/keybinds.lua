@@ -9,7 +9,7 @@ end
 
 vim.api.nvim_create_user_command('CompileAndRunTerminal', compile_and_run_terminal, {})
 
-function compile_and_run_java()
+local function compile_and_run_java()
     vim.cmd('write')
     vim.cmd('vsplit | terminal bash -c "java ' .. vim.fn.expand('%') .. '"')
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-\\><C-n>', true, true, true), 't', true)
@@ -34,6 +34,7 @@ local keymap = vim.keymap.set
 keymap('n', '<leader>ff', require('telescope.builtin').find_files, {})
 keymap('n', '<leader>fg', require('telescope.builtin').live_grep, {})
 keymap('n', '<leader>fb', require('telescope.builtin').buffers, {})
+keymap('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
 keymap("n", "<leader>e", "<cmd>Oil<cr>")
 keymap("n", "<leader>c", "<cmd>NvimTreeFocus<cr>")
 keymap('n', '<leader>fh', require('telescope.builtin').help_tags, {})

@@ -15,15 +15,19 @@
                 home-manager.follows = "home-manager";
             };
         };
+        nvf = {
+            url = "github:NotAShelf/nvf";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = { nixpkgs, home-manager, nix-flatpak,zen-browser, ... } @ inputs:
+    outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, nvf, ... } @ inputs:
         let
-            system = "x86_64-linux";  # Target architecture
-            pkgs = nixpkgs.legacyPackages.${system};  # Get the correct packages for the system
+        system = "x86_64-linux";  # Target architecture
+        pkgs = nixpkgs.legacyPackages.${system};  # Get the correct packages for the system
         in
-            {
-            # Define NixOS configuration for this system
+        {
+# Define NixOS configuration for this system
             nixosConfigurations."nixl" = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
@@ -32,17 +36,19 @@
                 modules = [
                     ./laptop/configuration.nix  # System configuration file
 
-                    home-manager.nixosModules.home-manager {
-                        home-manager.extraSpecialArgs = { inherit inputs; };  # Pass inputs to home-manager
+                        home-manager.nixosModules.home-manager {
 
-                        # Define user-specific configuration for "ervin"
-                        home-manager.users."ervin" = {
-                            imports = [
-                                ./home.nix  # User's home configuration
-                                nix-flatpak.homeManagerModules.nix-flatpak  
-                            ];
-                        };
-                    }
+                            home-manager.extraSpecialArgs = { inherit inputs system; };  # Pass inputs to home-manager
+
+# Define user-specific configuration for "ervin"
+                                home-manager.users."ervin" = {
+                                    imports = [
+                                        ./home.nix  # User's home configuration
+                                            nix-flatpak.homeManagerModules.nix-flatpak  
+                                            inputs.nvf.homeManagerModules.default
+                                    ];
+                                };
+                        }
                 ];
             };
             nixosConfigurations."nixp" = nixpkgs.lib.nixosSystem {
@@ -53,17 +59,17 @@
                 modules = [
                     ./pc/configuration.nix  # System configuration file
 
-                    home-manager.nixosModules.home-manager {
-                        home-manager.extraSpecialArgs = { inherit inputs; };  # Pass inputs to home-manager
+                        home-manager.nixosModules.home-manager {
+                            home-manager.extraSpecialArgs = { inherit inputs; };  # Pass inputs to home-manager
 
-                        # Define user-specific configuration for "ervin"
-                        home-manager.users."ervin" = {
-                            imports = [
-                                ./home.nix  # User's home configuration
-                                nix-flatpak.homeManagerModules.nix-flatpak  
-                            ];
-                        };
-                    }
+# Define user-specific configuration for "ervin"
+                                home-manager.users."ervin" = {
+                                    imports = [
+                                        ./home.nix  # User's home configuration
+                                            nix-flatpak.homeManagerModules.nix-flatpak  
+                                    ];
+                                };
+                        }
                 ];
             };
         };

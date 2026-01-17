@@ -22,7 +22,7 @@ require("config.lazy")
 require("oil").setup()
 
 -- Sets Color Theme
-vim.cmd([[colorscheme alabaster]])
+vim.cmd([[colorscheme jb]])
 
 -- Loads Mappings
 require("core.keybinds")
