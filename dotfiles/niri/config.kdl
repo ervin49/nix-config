@@ -135,6 +135,7 @@ hotkey-overlay {
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
+    off
     workspace-switch {
         spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
     }
@@ -185,8 +186,6 @@ window-rule {
     clip-to-geometry true
 }
 window-rule {
-    match app-id=r#"^gnome-control-center$"#
-    match app-id=r#"^pavucontrol$"#
     match app-id=r#"^nm-connection-editor$"#
     default-column-width { proportion 0.5; }
     open-floating false
@@ -198,12 +197,10 @@ window-rule {
     open-floating true
 }
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    match app-id="Alacritty"
     match app-id="zen"
-    match app-id="com.mitchellh.ghostty"
-    match app-id="kitty"
+    match app-id="alacritty"
     draw-border-with-background false
+    open-maximized true
 }
 window-rule {
     match is-active=false

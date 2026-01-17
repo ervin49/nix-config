@@ -151,43 +151,8 @@ in
         ".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ideavimrc";
     };
 
-    programs.kitty = {
+    programs.alacritty = {
         enable = true;
-        settings = {
-            enable_audio_bell = false;
-            hide_window_decorations = true;
-            confirm_os_window_close = 0;
-            cursor = "#e4e2e3";
-            cursor_text_color = "#c8c6c7";
-            foreground = "#e4e2e3";
-            selection_foreground = "#2e3038";
-            selection_background = "#c4c6d0";
-            url_color = "#c2c6d6";
-            shell = "tmux";
-            color0 = "#131315";
-            color1 = "#e44e45";
-            color2 = "#6ed66f";
-            color3 = "#dbd47b";
-            color4 = "#717ccf";
-            color5 = "#9496a0";
-            color6 = "#c2c6d6";
-            color7 = "#abb2bf";
-            color8 = "#5c6370";
-            color9 = "#e0625f";
-            color10 = "#86e086";
-            color11 = "#e8e297";
-            color12 = "#d0d4e5";
-            color13 = "#6079ad";
-            color14 = "#7473b1";
-            color15 = "#ffffff";
-        };
-        keybindings = {
-            "ctrl+backspace" = "send_text all \\x17";
-        };
-        font = {
-            name = "0xProto";
-            size = 14;
-        };
     };
 
     home.sessionVariables = {
