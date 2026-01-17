@@ -70,7 +70,6 @@
     ];
 
     environment.systemPackages = with pkgs; [
-        neovim
         kitty
         lua-language-server
         unzip
