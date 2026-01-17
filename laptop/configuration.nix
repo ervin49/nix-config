@@ -80,7 +80,6 @@
         clang
         xwayland-satellite
         greetd
-        ungoogled-chromium
     ];
 
 
@@ -118,16 +117,6 @@
         YSU_HARDCORE = "1";
     };
     hardware.keyboard.qmk.enable = true;
-
-    hardware.keyboard.qmk.enable = true;
-
-    environment.etc."chromium/policies/managed/default.json".text = builtins.toJSON {
-        DefaultSearchProviderEnabled = true;
-        DefaultSearchProviderName = "StartPage";
-        DefaultSearchProviderKeyword = "sp";
-        DefaultSearchProviderSearchURL = "https://www.startpage.com/sp/search?query={searchTerms}";
-
-    };
 
     services.udev.extraRules = ''
     # Keychron Universal Rule
