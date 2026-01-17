@@ -126,6 +126,8 @@ overview {
 // See the binds section below for more spawn examples.
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "zen"
+spawn-at-startup "alacritty"
 environment {
   XDG_CURRENT_DESKTOP "niri"
 }
@@ -202,6 +204,14 @@ window-rule {
     match app-id="jetbrains-clion"
     draw-border-with-background false
     open-maximized true
+}
+window-rule {
+    match app-id="zen"
+    open-on-workspace "1"
+}
+window-rule {
+    match app-id="Alacritty"
+    open-on-workspace "2"
 }
 window-rule {
     match is-active=false

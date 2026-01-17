@@ -119,9 +119,11 @@ in
         };
         initContent = ''
             [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-            if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-              tmux new-session -A -s main
+            if [ -z "$TMUX" ]
+            then
+                tmux attach -t TMUX || tmux new -s TMUX
             fi
+
         '';
     };
 
