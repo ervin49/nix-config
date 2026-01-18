@@ -14,8 +14,8 @@ set-option -g mouse on
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 bind-key -T prefix x kill-pane
-set -g focus-events on
 set -g status-style bg=default
+set -g focus-events on
 set -g status-left-length 90
 set -g status-right-length 90
 set -g status-justify centre
