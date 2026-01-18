@@ -2,15 +2,8 @@
 local g   = vim.g
 local opt = vim.opt
 
--- Global / Plugins
-g.AutoPairsFlyMode = 0        -- Disable autopairs fly mode
-
 -- General UI
 opt.number        = true       -- Show absolute line numbers
-opt.laststatus = 0 
-opt.cmdheight = 0
-opt.ruler = false
-opt.showmode = false
 opt.relativenumber= true       -- Show relative line numbers
 opt.cursorline    = true       -- Highlight current line
 opt.termguicolors = true       -- Enable true colors
@@ -42,24 +35,3 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { link = 'my_bg_cursor' })
 vim.diagnostic.config {
     float = { border = "rounded" }     -- Rounded border for diagnostic popups
 }
-
-vim.api.nvim_create_autocmd("OptionSet", {
-    pattern = "laststatus",
-    callback = function()
-        -- Verificăm dacă valoarea nu e 0
-        if vim.opt.laststatus:get() ~= 0 then
-            -- Folosim schedule pentru a evita erorile de tip "recursive loop"
-            vim.schedule(function()
-                vim.opt.laststatus = 0
-            end)
-        end
-    end,
-})
-
--- 3. Asigurare extra la intrarea în interfața grafică
-vim.api.nvim_create_autocmd("UIEnter", {
-    callback = function()
-        vim.opt.laststatus = 0
-        vim.opt.cmdheight = 0
-    end,
-})

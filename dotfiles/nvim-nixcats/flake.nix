@@ -109,9 +109,6 @@
             ];
 
             theming = with pkgs.vimPlugins; [
-                noice-nvim
-                    nui-nvim      
-                    nvim-notify  
                     kanagawa-nvim
                     lualine-nvim
                     transparent-nvim
