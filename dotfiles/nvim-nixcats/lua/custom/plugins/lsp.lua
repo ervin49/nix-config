@@ -1,6 +1,7 @@
 return {
     {
         "nvim-lspconfig",  -- doar ca marker, poate fi null dacă deja builtin LSP
+        lazy = false,
         config = function()
             -- Blink capabilities
             local blink_status, blink = pcall(require, "blink.cmp")
