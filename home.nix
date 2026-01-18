@@ -29,6 +29,7 @@ in
             matugen
             wl-clipboard
             clang-tools
+            jdt-language-server
             tldr
             cargo
             eza
