@@ -1,3 +1,4 @@
 require("plugins.blink")
+require("plugins.diagnostics")
 require("plugins.lualine")
 require("plugins.lsp")
