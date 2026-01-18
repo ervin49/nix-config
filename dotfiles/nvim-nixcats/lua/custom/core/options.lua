@@ -8,7 +8,7 @@ g.AutoPairsFlyMode = 0        -- Disable autopairs fly mode
 -- General UI
 opt.number        = true       -- Show absolute line numbers
 opt.relativenumber= true       -- Show relative line numbers
-opt.ruler         = true       -- Show cursor position
+opt.ruler         = false       -- Show cursor position
 opt.cursorline    = true       -- Highlight current line
 opt.termguicolors = true       -- Enable true colors
 opt.syntax        = 'on'       -- Enable syntax highlighting
@@ -42,3 +42,4 @@ vim.diagnostic.config {
     float = { border = "rounded" }     -- Rounded border for diagnostic popups
 }
 
+vim.cmd("TransparentEnable")
