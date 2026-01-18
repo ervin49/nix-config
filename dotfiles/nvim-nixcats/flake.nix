@@ -99,8 +99,44 @@
 
       # This is for plugins that will load at startup without using packadd:
       startupPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [ ];
-        general = with pkgs.vimPlugins; [ ];
+        gitPlugins = with pkgs.neovimPlugins; [
+            jb
+        ];
+
+        theming = with pkgs.vimPlugins; [
+            lualine-nvim
+            alpha-nvim
+            transparent-nvim
+            themery-nvim
+        ];
+
+        navigation = with pkgs.vimPlugins; [
+            plenary-nvim        
+            nvim-web-devicons
+            telescope-nvim
+            telescope-fzf-native-nvim
+            oil-nvim
+            flash-nvim
+            vim-cool
+        ]; 
+        
+        code = with pkgs.vimPlugins; [
+            nvim-treesitter.withAllGrammars
+            nvim-autopairs
+            vim-commentary
+            vim-gitgutter
+            which-key-nvim
+        ];
+
+        lsp = with pkgs.vimPlugins; [
+            nvim-lspconfig
+            tiny-inline-diagnostic-nvim
+            blink-cmp 
+        ];
+
+        others = with pkgs.vimPlugins;[
+            vim-tpipeline
+        ];
       };
 
       # not loaded automatically at startup.
@@ -179,10 +215,14 @@
         # and a set of categories that you want
         # (and other information to pass to lua)
         categories = {
+          theming = true;
+          navigation = true;
+          code = true;
+          lsp = true;
+          others = true;
+
           general = true;
           gitPlugins = true;
-          customPlugins = true;
-          test = true;
           example = {
             youCan = "add more than just booleans";
             toThisSet = [

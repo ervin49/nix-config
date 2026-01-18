@@ -26,13 +26,13 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1768743101,
-        "narHash": "sha256-rTT2JeAHZgUnwFOB0oCfxTXLlOd9MzekGvN09pR1fqg=",
-        "path": "/home/ervin/.nix-config/dotfiles/nvim",
+        "lastModified": 1768744733,
+        "narHash": "sha256-gHWNFuIadifXd2wZ0exrfhzJBG03OeGyCk7tBJM/y3k=",
+        "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats/",
         "type": "path"
       },
       "original": {
-        "path": "/home/ervin/.nix-config/dotfiles/nvim",
+        "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats/",
         "type": "path"
       }
     },
@@ -98,12 +98,29 @@
         "type": "github"
       }
     },
+    "plugins-jb": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768515550,
+        "narHash": "sha256-xzIlRYA5Htmi5WHkFZi+NJVTsEIJU3a6yn2pPObHZhI=",
+        "owner": "nickkadutskyi",
+        "repo": "jb.nvim",
+        "rev": "b9764719925ad54c3f4ac2d152d30b627bc526fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nickkadutskyi",
+        "repo": "jb.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "my-nixcats": "my-nixcats",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",
+        "plugins-jb": "plugins-jb",
         "zen-browser": "zen-browser"
       }
     },

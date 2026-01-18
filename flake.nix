@@ -16,6 +16,10 @@
             };
         };
         my-nixcats.url = "/home/ervin/.nix-config/dotfiles/nvim-nixcats/";
+        "plugins-jb" = {
+            url = "github:nickkadutskyi/jb.nvim";
+            flake = false;
+        };
     };
 
     outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, my-nixcats, ... } @ inputs:
