@@ -98,29 +98,12 @@
         "type": "github"
       }
     },
-    "plugins-jb": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1768515550,
-        "narHash": "sha256-xzIlRYA5Htmi5WHkFZi+NJVTsEIJU3a6yn2pPObHZhI=",
-        "owner": "nickkadutskyi",
-        "repo": "jb.nvim",
-        "rev": "b9764719925ad54c3f4ac2d152d30b627bc526fd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nickkadutskyi",
-        "repo": "jb.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "my-nixcats": "my-nixcats",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",
-        "plugins-jb": "plugins-jb",
         "zen-browser": "zen-browser"
       }
     },

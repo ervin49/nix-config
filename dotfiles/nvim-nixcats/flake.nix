@@ -23,6 +23,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    "plugins-jb-nvim" = {
+        url = "github:nickkadutskyi/jb.nvim";
+        flake = false;
+    };
 
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
@@ -100,7 +104,7 @@
       # This is for plugins that will load at startup without using packadd:
       startupPlugins = {
         gitPlugins = with pkgs.neovimPlugins; [
-            jb
+            jb-nvim
         ];
 
         theming = with pkgs.vimPlugins; [
