@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768765491,
-        "narHash": "sha256-eiIhpYF6/hOHUEYhnyBNDjIAe4X15Bx+s2gIqKT0Dq8=",
+        "lastModified": 1768770171,
+        "narHash": "sha256-JPmLGZgdWa8QcQbbtBqyZhpmxIHZ3lUO48laERjw+4k=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "01415693b07f08a7399d987ca7a79a7c85984f0e",
+        "rev": "521d5ea1a229ba315dd1cceaf869946ddcc83d36",
         "type": "github"
       },
       "original": {
@@ -27,8 +27,8 @@
         "plugins-jb-nvim": "plugins-jb-nvim"
       },
       "locked": {
-        "lastModified": 1768769737,
-        "narHash": "sha256-paY2PctGoh5b9wyZasGF5+t7WO57QdK2uIqC2fn+8cA=",
+        "lastModified": 1768770592,
+        "narHash": "sha256-lLAMhvOkyWxouCewvvUDI21R+KH706n1B2vYDDFAKmg=",
         "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats",
         "type": "path"
       },
@@ -134,11 +134,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768711359,
-        "narHash": "sha256-3n2ixvAMWij1ZOh/KMJJqizX+sRU083wFR8pa6+IkyU=",
+        "lastModified": 1768770425,
+        "narHash": "sha256-vfvwVcUCPCUPHjV975EQCfh6BAtvb2/+6ZQEYZKD164=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "8c9e9425946f290fa60e0e6fd7b1464cbcdbc53e",
+        "rev": "eedcac83d349cae42e4ce7dd08208a9b93fccb74",
         "type": "github"
       },
       "original": {
