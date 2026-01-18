@@ -109,7 +109,6 @@
 
         theming = with pkgs.vimPlugins; [
             lualine-nvim
-            alpha-nvim
             transparent-nvim
             themery-nvim
         ];

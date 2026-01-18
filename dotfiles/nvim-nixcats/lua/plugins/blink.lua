@@ -1,27 +1,44 @@
-local blink = require("blink.cmp")
+require('blink.cmp').setup({
+    keymap = {
+        preset = 'none', 
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+        ['<Up>'] = { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
 
-blink.setup({
-  -- Scurtături: Tab pentru selecție, Enter pentru confirmare
-  keymap = { preset = 'super-tab' },
+        -- SCROLL DOCS: Ctrl + Space pentru documentație (opțional)
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    },
 
-  -- Sursele de unde vin sugestiile
-  sources = {
-    default = {  'snippets','lsp','path','buffer' },
-  },
+    -- 2. COMPORTAMENTUL MENIULUI (Selectează primul automat)
+    completion = {
+        list = {
+            selection = { preselect = true, auto_insert = false }
+        },
 
-  -- Aspect (fereastră cu bordură, iconițe)
-  appearance = {
-    use_nvim_cmp_as_default = true,
-    nerd_font_variant = 'mono'
-  },
+        -- Documentația apare automat lângă sugestie (ca în IntelliJ)
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
 
-  -- Afișare documentație automată când selectezi o opțiune
-  completion = {
-    documentation = { auto_show = true, auto_show_delay_ms = 500 },
-    ghost_text = { enabled = true }, -- Arată textul gri înainte să scrii
-  },
-  
-  -- IMPORTANT: Spune-i să semneze capabilitățile pentru LSP
-  -- Asta face ca LSP-ul să știe că Blink există
-  signature = { enabled = true } 
+        -- Meniul nu apare dacă scrii doar 1 literă (opțional, reduce zgomotul)
+        menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end },
+    },
+
+    -- 3. ORDINEA SURSELOR
+    sources = {
+        -- Snippets primele, apoi LSP
+        default = { 'snippets', 'lsp', 'path', 'buffer' },
+        providers = {
+            snippets = {
+                name = 'Snippets',
+                module = 'blink.cmp.sources.snippets',
+                score_offset = 100, 
+            },
+            lsp = {
+                name = 'LSP',
+                module = 'blink.cmp.sources.lsp',
+                score_offset = 0, 
+            },
+        },
+    };
 })
