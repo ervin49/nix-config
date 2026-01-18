@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-themery.setup({
+require("themery").setup({
     livePreview = true,
     themes = {
         {

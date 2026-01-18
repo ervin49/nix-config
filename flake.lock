@@ -27,8 +27,8 @@
         "plugins-jb-nvim": "plugins-jb-nvim"
       },
       "locked": {
-        "lastModified": 1768772243,
-        "narHash": "sha256-PcfejjK/7j61k9mQyic3E+k50Mj4FaxY3RnKhdKW89g=",
+        "lastModified": 1768772440,
+        "narHash": "sha256-HVQH+KYpHJouygD1rWLg9t+2c+tHtBknlydy6pFleuc=",
         "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats",
         "type": "path"
       },
@@ -134,11 +134,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768772165,
-        "narHash": "sha256-5DW4Ee0NjjCzu+s4KRyom+5D6bpTfWGj5RnchrNu3eI=",
+        "lastModified": 1768772258,
+        "narHash": "sha256-tIJCUOa5Y9+9FKTnUOeCNDP6sQl7mCcqcsk2f7JNUu0=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "5416271127808f58005719d6d9e87dad98ff641c",
+        "rev": "209d5ce17c0747793f097da4637101642ee577e8",
         "type": "github"
       },
       "original": {
