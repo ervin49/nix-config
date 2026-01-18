@@ -15,13 +15,10 @@
                 home-manager.follows = "home-manager";
             };
         };
-        nvf = {
-            url = "github:NotAShelf/nvf";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        my-nixcats.url = "/home/ervin/.nix-config/dotfiles/nvim";
     };
 
-    outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, nvf, ... } @ inputs:
+    outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, my-nixcats, ... } @ inputs:
         let
         system = "x86_64-linux";  # Target architecture
         pkgs = nixpkgs.legacyPackages.${system};  # Get the correct packages for the system
@@ -38,14 +35,13 @@
 
                         home-manager.nixosModules.home-manager {
 
-                            home-manager.extraSpecialArgs = { inherit inputs system; };  # Pass inputs to home-manager
+                            home-manager.extraSpecialArgs = { inherit my-nixcats inputs; };  # Pass inputs to home-manager
 
 # Define user-specific configuration for "ervin"
                                 home-manager.users."ervin" = {
                                     imports = [
                                         ./home.nix  # User's home configuration
                                             nix-flatpak.homeManagerModules.nix-flatpak  
-                                            inputs.nvf.homeManagerModules.default
                                     ];
                                 };
                         }
@@ -60,7 +56,7 @@
                     ./pc/configuration.nix  # System configuration file
 
                         home-manager.nixosModules.home-manager {
-                            home-manager.extraSpecialArgs = { inherit inputs; };  # Pass inputs to home-manager
+                            home-manager.extraSpecialArgs = { inherit my-nixcats inputs; };  # Pass inputs to home-manager
 
 # Define user-specific configuration for "ervin"
                                 home-manager.users."ervin" = {

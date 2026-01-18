@@ -1,4 +1,4 @@
-{lib, config, pkgs, inputs, osConfig, ... }:
+{lib, config, pkgs, inputs, osConfig, my-nixcats, ... }:
 
 let
 dotfiles = "/home/ervin/.nix-config/dotfiles";
@@ -7,10 +7,6 @@ homeDirectory = "/home/ervin";
 isDesktop = osConfig.networking.hostName == "nixp";
 in
 {
-    imports = [
-        ./nvf.nix
-    ];
-
     home = {
         inherit username homeDirectory;
         stateVersion = "24.11";
@@ -33,6 +29,7 @@ in
             tldr
             cargo
             eza
+            my-nixcats.packages.${pkgs.system}.default
 
 #gui apps
             zathura
