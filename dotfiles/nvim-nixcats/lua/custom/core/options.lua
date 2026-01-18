@@ -41,5 +41,3 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { link = 'my_bg_cursor' })
 vim.diagnostic.config {
     float = { border = "rounded" }     -- Rounded border for diagnostic popups
 }
-
-vim.cmd("TransparentEnable")
