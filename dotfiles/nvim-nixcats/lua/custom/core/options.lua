@@ -8,15 +8,11 @@ g.AutoPairsFlyMode = 0        -- Disable autopairs fly mode
 -- General UI
 opt.number        = true       -- Show absolute line numbers
 opt.relativenumber= true       -- Show relative line numbers
-opt.ruler         = false       -- Show cursor position
 opt.cursorline    = true       -- Highlight current line
 opt.termguicolors = true       -- Enable true colors
 opt.syntax        = 'on'       -- Enable syntax highlighting
 opt.background    = 'dark'     -- Dark background
 opt.scrolloff     = 4          -- Lines to keep above/below cursor
-opt.showmode = false
-opt.laststatus = 0
-opt.cmdheight = 0
 opt.shortmess:append("cFW")
 
 -- Indentation / Tabs
@@ -42,3 +38,10 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { link = 'my_bg_cursor' })
 vim.diagnostic.config {
     float = { border = "rounded" }     -- Rounded border for diagnostic popups
 }
+
+vim.defer_fn(function()
+    vim.opt.laststatus = 0 
+    vim.opt.cmdheight = 0
+    vim.opt.ruler = false
+    vim.opt.showmode = false
+end, 50)
