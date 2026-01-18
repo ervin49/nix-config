@@ -1,7 +1,5 @@
-return {
-    require("custom.plugins.lualine"),
-    require("custom.plugins.blink"),
-    require("custom.plugins.diagnostics"),
-    require("custom.plugins.lsp"),
-    require("custom.plugins.vim-tpipeline")
-}
+require("custom.plugins.lualine")
+require("custom.plugins.blink")
+require("custom.plugins.diagnostics") 
+require("custom.plugins.lsp")
+require("custom.plugins.vim-tpipeline")
