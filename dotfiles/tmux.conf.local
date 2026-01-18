@@ -13,6 +13,7 @@ set -g focus-events on
 set -g status-left-length 90
 set -g status-right-length 90
 set -g status-justify centre
+set -g status-interval 0
 
 # Activarea transparenței pentru tmux
 set-option -g default-terminal "xterm-256color"

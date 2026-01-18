@@ -15,7 +15,7 @@ opt.syntax        = 'on'       -- Enable syntax highlighting
 opt.background    = 'dark'     -- Dark background
 opt.scrolloff     = 4          -- Lines to keep above/below cursor
 vim.opt.showmode = false
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 vim.opt.cmdheight = 1
 
 -- Indentation / Tabs
