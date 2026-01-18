@@ -103,6 +103,7 @@
 
       # This is for plugins that will load at startup without using packadd:
       startupPlugins = {
+
         gitPlugins = with pkgs.neovimPlugins; [
             jb-nvim
         ];

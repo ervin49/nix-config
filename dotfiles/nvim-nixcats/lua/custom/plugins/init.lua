@@ -1,0 +1,5 @@
+    require("custom.plugins.blink")
+    require("custom.plugins.diagnostics")
+    require("custom.plugins.lualine")
+    require("custom.plugins.lsp")
+    require("custom.plugins.vim-tpipeline")

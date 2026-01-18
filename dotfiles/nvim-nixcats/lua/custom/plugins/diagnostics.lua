@@ -1,4 +1,7 @@
--- Verificăm dacă plugin-ul este încărcat
+return {
+    {
+          "tiny-inline-diagnostic",
+        config = function()
 local status, tiny = pcall(require, "tiny-inline-diagnostic")
 if not status then
   vim.notify("Tiny Diagnostic nu este instalat!", vim.log.levels.WARN)
@@ -38,3 +41,6 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
 })
+end
+},
+}
