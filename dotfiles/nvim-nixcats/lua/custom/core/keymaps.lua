@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- Compile & Run
 local function compile_and_run_terminal()
     vim.cmd('write')
@@ -17,7 +19,6 @@ vim.api.nvim_create_user_command('CompileAndRunTerminal', compile_and_run_termin
 vim.api.nvim_create_user_command('CompileAndRunJava', compile_and_run_java, {})         -- Run Java program in terminal
 
 -- Keymaps
-vim.g.mapleader = " "
 local keymap = vim.keymap.set
 keymap('n', '<leader>tt', ':Themery<CR>', { noremap = true, silent = true })               -- Theme switcher
 keymap('n', '<leader>i', 'ggVG=<C-O>', { noremap = true, silent = true })                 -- Auto indent buffer
