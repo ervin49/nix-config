@@ -7,6 +7,9 @@ homeDirectory = "/home/ervin";
 isDesktop = osConfig.networking.hostName == "nixp";
 in
 {
+    imports = [
+        my-nixcats.homeModule 
+    ];
     home = {
         inherit username homeDirectory;
         stateVersion = "24.11";
@@ -185,6 +188,9 @@ in
         update.onActivation = true;
     };
 
+  nvim = {
+    enable = true;
+  };
     nixpkgs.config.allowUnfree = true;
     programs.home-manager.enable = true;
 }

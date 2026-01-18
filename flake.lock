@@ -23,11 +23,12 @@
     "my-nixcats": {
       "inputs": {
         "nixCats": "nixCats",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plugins-jb-nvim": "plugins-jb-nvim"
       },
       "locked": {
-        "lastModified": 1768744733,
-        "narHash": "sha256-gHWNFuIadifXd2wZ0exrfhzJBG03OeGyCk7tBJM/y3k=",
+        "lastModified": 1768747035,
+        "narHash": "sha256-7K29ZxjFAD4NpYghOixXKxkWfxIuf5IpeSEOEM8amCE=",
         "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats/",
         "type": "path"
       },
@@ -95,6 +96,22 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plugins-jb-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768515550,
+        "narHash": "sha256-xzIlRYA5Htmi5WHkFZi+NJVTsEIJU3a6yn2pPObHZhI=",
+        "owner": "nickkadutskyi",
+        "repo": "jb.nvim",
+        "rev": "b9764719925ad54c3f4ac2d152d30b627bc526fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nickkadutskyi",
+        "repo": "jb.nvim",
         "type": "github"
       }
     },
