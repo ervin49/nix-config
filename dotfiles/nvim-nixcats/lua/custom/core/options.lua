@@ -14,9 +14,10 @@ opt.termguicolors = true       -- Enable true colors
 opt.syntax        = 'on'       -- Enable syntax highlighting
 opt.background    = 'dark'     -- Dark background
 opt.scrolloff     = 4          -- Lines to keep above/below cursor
-vim.opt.showmode = false
-vim.opt.laststatus = 0
-vim.opt.cmdheight = 1
+opt.showmode = false
+opt.laststatus = 0
+opt.cmdheight = 1
+opt.shortmess:append("cFW")
 
 -- Indentation / Tabs
 opt.tabstop       = 4          -- Tab width
