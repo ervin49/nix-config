@@ -6,7 +6,7 @@ blink.setup({
 
   -- Sursele de unde vin sugestiile
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = {  'snippets','lsp','path','buffer' },
   },
 
   -- Aspect (fereastră cu bordură, iconițe)
