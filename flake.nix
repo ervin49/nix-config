@@ -15,10 +15,10 @@
                 home-manager.follows = "home-manager";
             };
         };
-        my-nixcats.url = "/home/ervin/.nix-config/dotfiles/nvim-nixcats/";
+        my-nvim.url = "path:/home/ervin/.nix-config/dotfiles/nvim-nixcats";
     };
 
-    outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, my-nixcats, ... } @ inputs:
+    outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, ... } @ inputs:
         let
         system = "x86_64-linux";  # Target architecture
         pkgs = nixpkgs.legacyPackages.${system};  # Get the correct packages for the system
@@ -35,7 +35,7 @@
 
                         home-manager.nixosModules.home-manager {
 
-                            home-manager.extraSpecialArgs = { inherit my-nixcats inputs; };  # Pass inputs to home-manager
+                            home-manager.extraSpecialArgs = { inherit inputs; };  # Pass inputs to home-manager
 
 # Define user-specific configuration for "ervin"
                                 home-manager.users."ervin" = {
@@ -56,7 +56,7 @@
                     ./pc/configuration.nix  # System configuration file
 
                         home-manager.nixosModules.home-manager {
-                            home-manager.extraSpecialArgs = { inherit my-nixcats inputs; };  # Pass inputs to home-manager
+                            home-manager.extraSpecialArgs = { inherit inputs; };  # Pass inputs to home-manager
 
 # Define user-specific configuration for "ervin"
                                 home-manager.users."ervin" = {

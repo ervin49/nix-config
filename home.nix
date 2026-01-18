@@ -1,4 +1,4 @@
-{lib, config, pkgs, inputs, osConfig, my-nixcats, ... }:
+{lib, config, pkgs, inputs, osConfig, ... }:
 
 let
 dotfiles = "/home/ervin/.nix-config/dotfiles";
@@ -7,9 +7,6 @@ homeDirectory = "/home/ervin";
 isDesktop = osConfig.networking.hostName == "nixp";
 in
 {
-    imports = [
-        my-nixcats.homeModule 
-    ];
     home = {
         inherit username homeDirectory;
         stateVersion = "24.11";
@@ -33,8 +30,7 @@ in
             tldr
             cargo
             eza
-            my-nixcats.packages.${pkgs.system}.default
-
+            inputs.my-nvim.packages.${pkgs.system}.default
 #gui apps
             zathura
             dbeaver-bin
@@ -189,9 +185,6 @@ in
         update.onActivation = true;
     };
 
-  nvim = {
-    enable = true;
-  };
     nixpkgs.config.allowUnfree = true;
     programs.home-manager.enable = true;
 }
