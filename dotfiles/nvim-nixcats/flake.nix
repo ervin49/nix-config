@@ -109,7 +109,7 @@
             ];
 
             theming = with pkgs.vimPlugins; [
-                    kanagawa-nvim
+                    rose-pine
                     lualine-nvim
                     transparent-nvim
                     themery-nvim

@@ -7,12 +7,11 @@ require("themery").setup({
     livePreview = true,
     themes = {
         {
-            name = "kanagawa",
-            colorscheme = "kanagawa",
+            name = "rose-pine",
+            colorscheme = "rose-pine",
             before = [[
             vim.opt.background = "dark"
             ]],
-            after = [[-- Same as before, but after if you need it]]
         },
         {
             name = "jb",
