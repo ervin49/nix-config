@@ -1,14 +1,8 @@
 # : << EOF
-# Oh my tmux!
-# 💛🩷💙🖤❤️🤍
-# https://github.com/gpakosz/.tmux
-# (‑●‑●)> dual licensed under the WTFPL v2 license and the MIT license,
-#         without any warranty.
-#         Copyright 2012— Gregory Pakosz (@gpakosz).
-
+# -- CONFIGURARE TMUX - Stil Minimalist / Tokyo Night --
+# ------------------------------------------------------
 
 # -- bindings ------------------------------------------------------------------
-
 set -g prefix C-space
 set-option -g mouse on
 unbind r
@@ -25,270 +19,128 @@ set-option -g default-terminal "xterm-256color"
 set-option -g terminal-overrides 'xterm*:colors=256:cursorblink=false'
 
 
-# preserve tmux stock bindings,
-# while adding bindings that don't conflict with these stock bindings
-# /!\ this disables some of Oh my tmux! bindings described in README.md
-#   - true
-#   - false (default)
-tmux_conf_preserve_stock_bindings=false
+# Culori corecte (True Color)
+set-option -g default-terminal "tmux-256color"
 set-option -sa terminal-overrides ",xterm*:Tc"
 
+# -- oh my tmux settings -------------------------------------------------------
 
-# -- session creation ----------------------------------------------------------
-
-# prompt for session name when creating a new session, possible values are:
-#   - true
-#   - false (default)
-#   - disabled (do not modify new-session bindings)
+tmux_conf_preserve_stock_bindings=false
 tmux_conf_new_session_prompt=false
-
-# new session retains current path, possible values are:
-#   - true
-#   - false (default)
-#   - disabled (do not modify new-session bindings)
 tmux_conf_new_session_retain_current_path=false
-
-
-# -- windows & pane creation ---------------------------------------------------
-
-# new window retains current path, possible values are:
-#   - true
-#   - false (default)
-#   - disabled (do not modify new-window bindings)
 tmux_conf_new_window_retain_current_path=false
-
-# new window tries to reconnect ssh sessions, possible values are:
-#   - true
-#   - false (default)
-#   - disabled (do not modify new-window bindings)
 tmux_conf_new_window_reconnect_ssh=false
-
-# new pane retains current path, possible values are:
-#   - true (default)
-#   - false
-#   - disabled (do not modify split-window bindings)
 tmux_conf_new_pane_retain_current_path=true
-
-# new pane tries to reconnect ssh sessions, possible values are:
-#   - true
-#   - false (default)
-#   - disabled (do not modify split-window bindings)
 tmux_conf_new_pane_reconnect_ssh=false
+tmux_conf_24b_colour=true
 
-
-# -- display -------------------------------------------------------------------
-
-# RGB 24-bit colour support, possible values are:
-#   - true
-#   - false
-#   - auto (default)
-tmux_conf_24b_colour=auto
-
-
-# -- theming -------------------------------------------------------------------
+# -- TEMA (Design) -------------------------------------------------------------
 
 # enable or disable theming:
-#   - enabled (default)
-#   - disabled
 tmux_conf_theme=enabled
 
-# Setez doar culorile de fundal aici (Baza)
-tmux_conf_theme_colour_1="#080808"    
-tmux_conf_theme_colour_2="#1c1c1c"   
-tmux_conf_theme_colour_3="#505050"  
-tmux_conf_theme_colour_4="#505050" 
+# PALETA DE CULORI (Stil Tokyo Night - Odihnitor)
+# 1 = Fundal Bara (Dark Navy)
+# 2 = Fundal Panou Inactiv
+# 3 = Text Principal (Gri-Albastrui)
+# 4 = Accent (Albastru deschis)
+# 5 = Text Secundar (Alb)
 
-# SĂGEȚILE (Stilul Powerline)
-tmux_conf_theme_left_separator_main='\uE0B0'
-tmux_conf_theme_left_separator_sub='\uE0B1'
-tmux_conf_theme_right_separator_main='\uE0B2'
-tmux_conf_theme_right_separator_sub='\uE0B3'
-
-# --- Setări obligatoriu de păstrat pentru ca tmux să nu dea eroare ---
-tmux_conf_theme_colour_5="#e4e2e3"
-tmux_conf_theme_colour_6="#080808"
-tmux_conf_theme_colour_7="#e4e2e3" 
-tmux_conf_theme_colour_8="#080808"
-tmux_conf_theme_colour_9="#e4e2e3"
-tmux_conf_theme_colour_10="#505050"
-tmux_conf_theme_colour_11="#1c1c1c"
-tmux_conf_theme_colour_12="#e4e2e3"
-tmux_conf_theme_colour_13="#e4e2e3"
-tmux_conf_theme_colour_14="#080808"
-tmux_conf_theme_colour_15="#080808"
-tmux_conf_theme_colour_16="#d75f5f"
+tmux_conf_theme_colour_1="#1a1b26"    # Background Bara (Foarte inchis)
+tmux_conf_theme_colour_2="#24283b"    # Background secundar
+tmux_conf_theme_colour_3="#a9b1d6"    # Text normal
+tmux_conf_theme_colour_4="#7aa2f7"    # Accent Albastru (Border activ)
+tmux_conf_theme_colour_5="#c0caf5"    # Text alb (Mesaje)
+tmux_conf_theme_colour_6="#1a1b26"    # Negru (pentru contrast)
+tmux_conf_theme_colour_7="#c0caf5"    # Alb
+tmux_conf_theme_colour_8="#1a1b26"    # Dark
+tmux_conf_theme_colour_9="#bb9af7"    # Mov (Accent secundar)
+tmux_conf_theme_colour_10="#ff9e64"   # Portocaliu (Warning)
+tmux_conf_theme_colour_11="#9ece6a"   # Verde
+tmux_conf_theme_colour_12="#a9b1d6"   
+tmux_conf_theme_colour_13="#a9b1d6"
+tmux_conf_theme_colour_14="#1a1b26"
+tmux_conf_theme_colour_15="#1a1b26"
+tmux_conf_theme_colour_16="#f7768e"   # Rosu
 tmux_conf_theme_colour_17="#e4e2e3"
 
-# window style
-tmux_conf_theme_window_fg="default"
-tmux_conf_theme_window_bg="default"
+# -- Stil Ferestre --
 
-# highlight focused pane, possible values are:
-#   - true
-#   - false (default)
-tmux_conf_theme_highlight_focused_pane=false
+# Fereastra normală (inactivă)
+tmux_conf_theme_window_fg="$tmux_conf_theme_colour_3"
+tmux_conf_theme_window_bg="$tmux_conf_theme_colour_1" # Transparent/Dark
 
-# focused pane colours:
-tmux_conf_theme_focused_pane_bg="$tmux_conf_theme_colour_2"
-
-# pane border style, possible values are:
-#   - thin (default)
-#   - fat
-tmux_conf_theme_pane_border_style=thin
-
-# pane borders colours:
-tmux_conf_theme_pane_border="$tmux_conf_theme_colour_2"
-tmux_conf_theme_pane_active_border="$tmux_conf_theme_colour_4"
-%if #{>=:#{version},3.2}
-tmux_conf_theme_pane_active_border="#{?pane_in_mode,$tmux_conf_theme_colour_9,#{?synchronize-panes,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_4}}"
-%endif
-
-# pane indicator colours (when you hit <prefix> + q)
-tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_4"
-tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_4"
-
-# status line style
-tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_message_bg="$tmux_conf_theme_colour_5"
-tmux_conf_theme_message_attr="bold"
-
-# status line command style (<prefix> : Escape)
-tmux_conf_theme_message_command_fg="$tmux_conf_theme_colour_5"
-tmux_conf_theme_message_command_bg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_message_command_attr="bold"
-
-# window modes style
-tmux_conf_theme_mode_fg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_mode_bg="$tmux_conf_theme_colour_5"
-tmux_conf_theme_mode_attr="bold"
-
-# status line style
-tmux_conf_theme_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_status_bg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_status_attr="none"
-
-# terminal title
-tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
-
-# window status style
-tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_window_status_attr="none"
-tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
-
-# --- CONFIGURARE CORECTĂ PENTRU TABUL ACTIV ---
-# Text: #e4e2e3 (Alb Murdar)
-tmux_conf_theme_window_status_current_fg="#e4e2e3"
-
-# Fundal: #1c1c1c (Gri Foarte Închis - "Gri-ul de la NORMAL")
-tmux_conf_theme_window_status_current_bg="#333333"
-
+# Fereastra ACTIVĂ (Cea pe care ești) - Bold și Albastru discret
+tmux_conf_theme_window_status_current_fg="#7aa2f7"     # Scris albastru
+tmux_conf_theme_window_status_current_bg="#292e42"     # Fundal puțin mai deschis
 tmux_conf_theme_window_status_current_attr="bold"
-tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
-# ------------------------------------------------
+tmux_conf_theme_window_status_current_format="#I #W"
 
-# window activity status style
-tmux_conf_theme_window_status_activity_fg="default"
-tmux_conf_theme_window_status_activity_bg="default"
-tmux_conf_theme_window_status_activity_attr="underscore"
+# Format ferestre inactive
+tmux_conf_theme_window_status_format="#I #W"
 
-# window bell status style
-tmux_conf_theme_window_status_bell_fg="$tmux_conf_theme_colour_5"
-tmux_conf_theme_window_status_bell_bg="default"
-tmux_conf_theme_window_status_bell_attr="blink,bold"
-
-# window last status style
-tmux_conf_theme_window_status_last_fg="$tmux_conf_theme_colour_4"
-tmux_conf_theme_window_status_last_bg="$tmux_conf_theme_colour_2"
-tmux_conf_theme_window_status_last_attr="none"
-
-# status left/right sections separators
+# -- Separatoare (FĂRĂ SĂGEȚI - Stil Minimalist) --
 tmux_conf_theme_left_separator_main=""
 tmux_conf_theme_left_separator_sub="|"
 tmux_conf_theme_right_separator_main=""
 tmux_conf_theme_right_separator_sub="|"
 
-# status left/right content:
-tmux_conf_theme_status_left=" ❐ #S "
-tmux_conf_theme_status_right="#{prefix} #{username}#{root} | #{hostname} "
+# -- Borduri Panouri (Liniile dintre terminale) --
+tmux_conf_theme_pane_border_style=thin
+tmux_conf_theme_pane_border="$tmux_conf_theme_colour_2"        # Gri inchis
+tmux_conf_theme_pane_active_border="$tmux_conf_theme_colour_4" # Albastru cand e activ
 
-# status left style
-tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
-tmux_conf_theme_status_left_attr="bold,none,none"
+# Indicator panou (cand apesi prefix+q)
+tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_4"
+tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_4"
 
-# status right style
+# -- Bara de Status --
+
+# Stânga: Doar numele sesiunii
+tmux_conf_theme_status_left=" #S "
+tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6" # Scris negru/dark
+tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_4" # Fundal albastru
+tmux_conf_theme_status_left_attr="bold"
+
+# Dreapta: User | Host (Simplu)
+tmux_conf_theme_status_right="#{prefix} #{username} | #{hostname} "
 tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_14"
 tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_17"
 tmux_conf_theme_status_right_attr="none,none,bold"
 
-# pairing indicator
-tmux_conf_theme_pairing="⚇"
+# -- Mesaje și Comenzi --
+tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_message_bg="$tmux_conf_theme_colour_5"
+tmux_conf_theme_message_attr="bold"
+
+tmux_conf_theme_message_command_fg="$tmux_conf_theme_colour_5"
+tmux_conf_theme_message_command_bg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_message_command_attr="bold"
+
+tmux_conf_theme_mode_fg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_mode_bg="$tmux_conf_theme_colour_5"
+tmux_conf_theme_mode_attr="bold"
+
+# -- Indicatori --
+tmux_conf_theme_pairing="⚇"                 # U+2687
 tmux_conf_theme_pairing_fg="none"
 tmux_conf_theme_pairing_bg="none"
 tmux_conf_theme_pairing_attr="none"
 
-# prefix indicator
-tmux_conf_theme_prefix="⌨"
+tmux_conf_theme_prefix="⌨"                  # U+2328
 tmux_conf_theme_prefix_fg="none"
 tmux_conf_theme_prefix_bg="none"
 tmux_conf_theme_prefix_attr="none"
 
-# mouse indicator
-tmux_conf_theme_mouse="↗"
-tmux_conf_theme_mouse_fg="none"
-tmux_conf_theme_mouse_bg="none"
-tmux_conf_theme_mouse_attr="none"
-
-# root indicator
 tmux_conf_theme_root="!"
 tmux_conf_theme_root_fg="none"
 tmux_conf_theme_root_bg="none"
 tmux_conf_theme_root_attr="bold,blink"
 
-# synchronized indicator
-tmux_conf_theme_synchronized="⚏"
-tmux_conf_theme_synchronized_fg="none"
-tmux_conf_theme_synchronized_bg="none"
-tmux_conf_theme_synchronized_attr="none"
-
-# battery bar symbols
-tmux_conf_battery_bar_symbol_full="◼"
-tmux_conf_battery_bar_symbol_empty="◻"
-tmux_conf_battery_bar_length="auto"
-tmux_conf_battery_bar_palette="gradient"
-tmux_conf_battery_hbar_palette="gradient"
-tmux_conf_battery_vbar_palette="gradient"
-tmux_conf_battery_status_charging="↑"
-tmux_conf_battery_status_discharging="↓"
-
-# clock style
-tmux_conf_theme_clock_colour="$tmux_conf_theme_colour_4"
-tmux_conf_theme_clock_style="24"
-
-# -- clipboard -----------------------------------------------------------------
-tmux_conf_copy_to_os_clipboard=false
-
-# -- urlscan -------------------------------------------------------------------
-tmux_conf_urlscan_options="--compact --dedupe"
-
-# -- user customizations -------------------------------------------------------
-# set -g history-limit 10000
-# set -g mouse on
-# set -g status-keys vi
-# set -g mode-keys vi
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
-# bind c new-window -c '#{pane_current_path}' #!important
-# set -g status-position top
-
-# -- tpm -----------------------------------------------------------------------
+# -- Alte setări --
+tmux_conf_copy_to_os_clipboard=true
 tmux_conf_update_plugins_on_launch=true
 tmux_conf_update_plugins_on_reload=true
 tmux_conf_uninstall_plugins_on_reload=true
 
-# -- custom variables ----------------------------------------------------------
 # EOF
