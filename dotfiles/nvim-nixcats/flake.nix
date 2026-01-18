@@ -122,6 +122,7 @@
                 plenary-nvim        
                     nvim-web-devicons
                     telescope-nvim
+                    vim-tmux-navigator
                     telescope-fzf-native-nvim
                     oil-nvim
                     flash-nvim
