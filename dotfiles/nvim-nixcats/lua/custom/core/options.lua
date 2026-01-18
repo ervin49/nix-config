@@ -16,7 +16,7 @@ opt.background    = 'dark'     -- Dark background
 opt.scrolloff     = 4          -- Lines to keep above/below cursor
 opt.showmode = false
 opt.laststatus = 0
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.shortmess:append("cFW")
 
 -- Indentation / Tabs
