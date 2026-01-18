@@ -19,10 +19,6 @@
     };
 
     outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, ... } @ inputs:
-        let
-        system = "x86_64-linux";  # Target architecture
-        pkgs = nixpkgs.legacyPackages.${system};  # Get the correct packages for the system
-        in
         {
 # Define NixOS configuration for this system
             nixosConfigurations."nixl" = nixpkgs.lib.nixosSystem {

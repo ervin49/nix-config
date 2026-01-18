@@ -4,7 +4,6 @@ if not oil_status then
 end
 
 oil.setup({
-  -- Opțiuni implicite bune:
   default_file_explorer = true, -- Înlocuiește file explorer-ul standard (netrw)
   columns = {
     "icon",
@@ -13,9 +12,7 @@ oil.setup({
     -- "mtime",
   },
   view_options = {
-    show_hidden = true, -- Arată fișierele cu punct (.)
+    show_hidden = true, 
   },
-  -- Ca să poți șterge fișierele trimise în coșul de gunoi, nu permanent (opțional)
-  delete_to_trash = true,
   skip_confirm_for_simple_edits = true,
 })
