@@ -145,7 +145,6 @@
             ];
 
             others = with pkgs.vimPlugins;[
-                vim-tpipeline
             ];
         };
 
