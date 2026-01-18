@@ -15,7 +15,7 @@
                 home-manager.follows = "home-manager";
             };
         };
-        my-nixcats.url = "/home/ervin/.nix-config/dotfiles/nvim";
+        my-nixcats.url = "/home/ervin/.nix-config/dotfiles/nvim-nixcats/";
     };
 
     outputs = { nixpkgs, home-manager, nix-flatpak, zen-browser, my-nixcats, ... } @ inputs:
