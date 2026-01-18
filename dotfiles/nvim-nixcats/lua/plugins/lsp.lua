@@ -1,67 +1,61 @@
-local blink = require('blink.cmp')
-local lspconfig = require('lspconfig') -- Îl păstrăm doar pentru utilitare (ex: root_pattern)
+-- ==========================================================
+-- 1. HACK PENTRU EROAREA "DEPRECATED"
+-- ==========================================================
+-- Asta blochează mesajul enervant ca să nu îți oprească editorul
+local original_notify = vim.notify
+vim.notify = function(msg, level, opts)
+  if msg and (msg:match("deprecated") or msg:match("framework")) then
+    return
+  end
+  original_notify(msg, level, opts)
+end
+-- ==========================================================
 
--- 1. Obținem capabilitățile de la Blink (pentru autocomplete)
+local lspconfig = require('lspconfig')
+local blink = require('blink.cmp')
+
+-- Conectăm Blink pentru autocompletare
 local capabilities = blink.get_lsp_capabilities()
 
--- Funcție ajutătoare pentru a aplica noul standard
--- Aceasta verifică dacă ai Neovim-ul nou care suportă 'vim.lsp.config'
-local function enable_server(server_name, config)
-  -- Adăugăm capabilities la config-ul serverului
-  config.capabilities = capabilities
-  
-  -- Dacă există noul sistem (Neovim 0.11+), îl folosim
-  if vim.lsp.config then
-    vim.lsp.config[server_name] = config
-    vim.lsp.enable(server_name)
-  else
-    -- Fallback pentru versiuni mai vechi (dacă nu ai Neovim 0.11 încă)
-    -- Accesăm direct configs pentru a evita eroarea de 'deprecated'
-    require('lspconfig.configs')[server_name].setup(config)
-  end
-end
-
--- ==========================================
--- AICI CONFIGURĂM SERVERELE
--- ==========================================
-
--- 1. C++ (clangd)
-enable_server("clangd", {
+-- ==========================================================
+-- 2. CONFIGURARE CLANGD (C++)
+-- ==========================================================
+lspconfig.clangd.setup({
+  capabilities = capabilities,
   cmd = { "clangd" },
   filetypes = { "c", "cpp", "objc", "objcpp" },
+  
+  -- TRUCUL MAGIC:
+  -- Îl forțăm să considere folderul curent ca fiind rădăcina proiectului.
+  -- Asta îl face să pornească imediat, chiar și pe fișiere simple.
+  root_dir = function() 
+      return vim.fn.getcwd() 
+  end,
 })
 
--- 2. Java (jdtls)
-enable_server("jdtls", {
+-- ==========================================================
+-- 3. CONFIGURARE JAVA (JDTLS)
+-- ==========================================================
+lspconfig.jdtls.setup({
+  capabilities = capabilities,
   cmd = { "jdtls" },
-  root_dir = lspconfig.util.root_pattern(".git", "mvnw", "gradlew", "pom.xml", "build.gradle"),
+  -- Și la Java îl facem mai puțin pretențios
+  root_dir = function() 
+      return vim.fs.dirname(vim.fs.find({'.git', 'mvnw', 'gradlew', 'pom.xml'}, { upward = true })[1]) 
+             or vim.fn.getcwd()
+  end,
 })
 
--- 3. Nix (nil)
-enable_server("nil_ls", {})
-
--- 4. Lua (lua_ls)
-enable_server("lua_ls", {
-  settings = {
-    Lua = {
-      diagnostics = { globals = { 'vim' } }
-    }
-  }
-})
-
--- ==========================================
--- SCURTĂTURI DE TASTE (Keymaps)
--- ==========================================
+-- ==========================================================
+-- 4. SCURTĂTURI DE TASTE
+-- ==========================================================
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     local opts = { buffer = event.buf }
-
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   end,
 })
