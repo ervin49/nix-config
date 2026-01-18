@@ -135,6 +135,7 @@
         lsp = with pkgs.vimPlugins; [
             nvim-lspconfig
             tiny-inline-diagnostic-nvim
+            friendly-snippets
             blink-cmp 
         ];
 
@@ -154,7 +155,8 @@
       # variable available to nvim runtime
       sharedLibraries = {
         general = with pkgs; [
-          # libgit2
+            clang-tools
+            jdt-language-server
         ];
       };
 

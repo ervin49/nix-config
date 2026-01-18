@@ -20,6 +20,9 @@ require("oil").setup()
 -- Sets Color Theme
 vim.cmd([[colorscheme jb]])
 
+-- Loads plugins configs
+require("plugins")
+
 -- Loads Mappings
 require("core.keybinds")
 require("core.settings")
