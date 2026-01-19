@@ -1,9 +1,3 @@
--- Verificăm dacă categoria în care am pus harpoon este activă
-if require('nixCatsUtils').isNixCats then
-    -- Asigură-te că numele categoriei corespunde cu cel din flake.nix
-    if not require('nixCats').get('general') then return end
-end
-
 local harpoon = require("harpoon")
 
 -- Setup obligatoriu pentru Harpoon v2
