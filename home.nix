@@ -26,7 +26,6 @@ in
             matugen
             wl-clipboard
             clang-tools
-            ccls
             jdt-language-server
             tldr
             cargo

@@ -2,54 +2,45 @@
 local blink_status, blink = pcall(require, "blink.cmp")
 local capabilities = blink_status and blink.get_lsp_capabilities() or {}
 
--- NOTA: Folosim API-ul nativ vim.lsp (specific Neovim modern/nightly)
+-- NOTA: Nu mai folosim require('lspconfig') aici, folosim API-ul nativ vim.lsp
 
 ---------------------------------------
--- 1. Configurare CCLS (C/C++)
+-- 1. Configurare CLANGD (C/C++)
 ---------------------------------------
--- Inlocuim blocul clangd cu ccls
-vim.lsp.config('ccls', {
-    cmd = { 'ccls' },
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-    -- Este CRITIC sa ai '.ccls' aici, ca sa stie unde e radacina proiectului
-    root_markers = { '.ccls', 'compile_commands.json', '.git' }, 
+-- Definim configuratia
+vim.lsp.config('clangd', {
+        cmd = { 'clangd'},
+    filetypes = { "h", "c", "cpp", "objc", "objcpp" },
+    root_markers = { '.git', 'compile_commands.json', 'compile_flags.txt' },
     capabilities = capabilities,
-    init_options = {
-        compilationDatabaseDirectory = ".", -- Cauta json-ul daca exista
-        index = {
-            threads = 0, -- Foloseste toate nucleele CPU
-        },
-        clang = {
-            excludeArgs = { "-frounding-math" }, -- Fix pentru erori comune
-        },
-    },
 })
 
--- Activam serverul CCLS
-vim.lsp.enable('ccls')
+-- Activam serverul
+vim.lsp.enable('clangd')
 
 ---------------------------------------
 -- 2. Configurare JDTLS (Java)
 ---------------------------------------
 vim.lsp.config('jdtls', {
-    cmd = { 'jdtls' },
-    root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }, 
-    capabilities = capabilities,
+        cmd = { 'jdtls' },
+        -- root_markers inlocuieste root_dir in noua versiune
+        root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }, 
+        capabilities = capabilities,
 })
 
--- Activam serverul JDTLS
+-- Activam serverul
 vim.lsp.enable('jdtls')
 
 ---------------------------------------
 -- 3. Shortcut-uri (Keymaps)
 ---------------------------------------
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(event)
-        local opts = { buffer = event.buf }
+        callback = function(event)
+                local opts = { buffer = event.buf }
 
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    end,
-})
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+            end,
+    })
