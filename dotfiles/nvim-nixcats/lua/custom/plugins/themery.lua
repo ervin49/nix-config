@@ -7,14 +7,14 @@ require("themery").setup({
     livePreview = true,
     themes = {
         {
-            name = "rose-pine",
-            colorscheme = "rose-pine",
+            name = "gruvbox-material",
+            colorscheme = "gruvbox-material",
             before = [[
             vim.opt.background = "dark"
             ]],
         },
         {
-            name = "jb",
+            name = "jetbrains",
             colorscheme = "jb",
             before = [[
             vim.opt.background = "dark"

@@ -109,7 +109,7 @@
             ];
 
             theming = with pkgs.vimPlugins; [
-                    rose-pine
+                    gruvbox-material
                     lualine-nvim
                     transparent-nvim
                     themery-nvim
