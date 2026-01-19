@@ -4,13 +4,14 @@ local opt = vim.opt
 
 -- General UI
 opt.number        = true       -- Show absolute line numbers
-opt.cmdheight     = 2
+opt.cmdheight     = 0
 opt.relativenumber= true       -- Show relative line numbers
 opt.cursorline    = true       -- Highlight current line
 opt.termguicolors = true       -- Enable true colors
 opt.syntax        = 'on'       -- Enable syntax highlighting
 opt.background    = 'dark'     -- Dark background
 opt.scrolloff     = 4          -- Lines to keep above/below cursor
+opt.shortmess:append("IsOtTcf")
 
 -- Indentation / Tabs
 opt.tabstop       = 4          -- Tab width
