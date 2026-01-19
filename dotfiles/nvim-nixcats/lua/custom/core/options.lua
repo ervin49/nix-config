@@ -11,7 +11,6 @@ opt.termguicolors = true       -- Enable true colors
 opt.syntax        = 'on'       -- Enable syntax highlighting
 opt.background    = 'dark'     -- Dark background
 opt.scrolloff     = 4          -- Lines to keep above/below cursor
-opt.shortmess:append("IsOtTcf")
 
 -- Indentation / Tabs
 opt.tabstop       = 4          -- Tab width

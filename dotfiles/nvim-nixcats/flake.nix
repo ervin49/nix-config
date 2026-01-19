@@ -113,6 +113,8 @@
                     lualine-nvim
                     transparent-nvim
                     themery-nvim
+                    noice-nvim
+                    nui-nvim
             ];
 
             navigation = with pkgs.vimPlugins; [
