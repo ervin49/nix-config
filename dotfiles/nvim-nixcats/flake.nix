@@ -132,6 +132,7 @@
             code = with pkgs.vimPlugins; [
                 nvim-treesitter.withAllGrammars
                     nvim-autopairs
+                    trouble-nvim
                     vim-commentary
                     vim-gitgutter
                     which-key-nvim

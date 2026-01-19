@@ -1,4 +1,5 @@
 require("custom.plugins.lualine")
+require("custom.plugins.trouble")
 require("custom.plugins.transparent")
 require("custom.plugins.themery")
 require("custom.plugins.oil")
