@@ -16,7 +16,8 @@ opt.scrolloff     = 4          -- Lines to keep above/below cursor
 opt.tabstop       = 4          -- Tab width
 opt.shiftwidth    = 4          -- Indent width
 opt.expandtab     = true       -- Use spaces instead of tabs
-opt.smartindent   = true       -- Smart auto-indent
+opt.cindent       = true       -- Smart auto-indent
+opt.cinoptions:append(":0")
 
 -- Editing behavior
 opt.autowrite     = true       -- Auto-save before commands
