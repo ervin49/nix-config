@@ -4,7 +4,7 @@ if not blink_status then
 end
 
 blink.setup({
-    -- === SECTIUNEA NOUA: Logica pentru Quotes/Comments ===
+    -- === SECTIUNEA INITIALA: Logica pentru Quotes/Comments/Cmdline ===
     enabled = function()
         if vim.bo.buftype == 'prompt' then return false end
         -- activ în cmdline
@@ -38,29 +38,38 @@ blink.setup({
     completion = {
         list = { selection = { preselect = true, auto_insert = false } },
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
-        -- Am păstrat și regula ta pentru cmdline
         menu = { auto_show = function(ctx) return ctx.mode ~= "cmdline" end },
     },
 
     sources = {
+        -- Ordinea generală rămâne neschimbată
         default = { "snippets", "lsp", "buffer", "path" },
+        
         providers = {
             snippets = {
                 name = "Snippets",
                 module = "blink.cmp.sources.snippets",
-                score_offset = 100 
+                score_offset = 100,
+                
+                -- === FIX-UL PENTRU CONTEXT ===
+                -- Aceasta funcție oprește snippet-urile dacă ai tastat '.' sau '->'
+                enabled = function(ctx)
+                    return ctx ~= nil 
+                        and ctx.trigger.kind ~= vim.lsp.protocol.CompletionTriggerKind.TriggerCharacter
+                end,
+                -- =============================
             },
 
-            lsp       = {
+            lsp = {
                 name = "LSP",
                 module = "blink.cmp.sources.lsp",
-                score_offset = 90 
+                score_offset = 90, 
             },
 
             buffer = {
                 name = "Buffer",
                 module = "blink.cmp.sources.buffer",
-                score_offset = 50,  -- Backup
+                score_offset = 50,
             },
 
             path = {
