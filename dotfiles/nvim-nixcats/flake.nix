@@ -127,6 +127,7 @@
                     oil-nvim
                     flash-nvim
                     vim-cool
+                    harpoon2
             ]; 
 
             code = with pkgs.vimPlugins; [
