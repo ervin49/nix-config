@@ -6,24 +6,19 @@ end
 blink.setup({
     -- === SECTIUNEA NOUA: Logica pentru Quotes/Comments ===
     enabled = function()
-        -- 1. Dezactivăm în prompt-uri (Telescope, etc.)
         if vim.bo.buftype == 'prompt' then return false end
-        
-        -- 2. Verificăm dacă suntem în Command Line mode
-        if vim.api.nvim_get_mode().mode == 'c' then return true end
+        -- activ în cmdline
+        if vim.api.nvim_get_mode().mode == "c" then return true end
 
-        -- 3. Logica de Treesitter pentru Quotes și Comentarii
-        local success, node = pcall(vim.treesitter.get_node)
-        if success and node then
-            -- Verificăm nodul curent ȘI părinții lui (pentru a prinde string_content)
-            local cur_node = node
-            while cur_node do
-                local type = cur_node:type()
-                if type:find("string") or type:find("comment") then
-                    return false
-                end
-                cur_node = cur_node:parent()
-            end
+        local line = vim.fn.getline(".")
+        local col = vim.fn.col(".")
+
+        local before = line:sub(1, col - 1)
+        local after  = line:sub(col)
+
+        -- între ""
+        if before:match('".-$') and after:match('^.-"') then
+            return false
         end
 
         return true
@@ -39,14 +34,14 @@ blink.setup({
         ["<Down>"] = { "select_next", "fallback" },
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
     },
-    
+
     completion = {
         list = { selection = { preselect = true, auto_insert = false } },
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
         -- Am păstrat și regula ta pentru cmdline
         menu = { auto_show = function(ctx) return ctx.mode ~= "cmdline" end },
     },
-    
+
     sources = {
         default = { "snippets", "lsp", "buffer", "path" },
         providers = {
