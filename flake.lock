@@ -27,8 +27,8 @@
         "plugins-jb-nvim": "plugins-jb-nvim"
       },
       "locked": {
-        "lastModified": 1768781165,
-        "narHash": "sha256-HWdmPh/lY2lDAsvEL9sraggYrJ0j/r5bP9k7OgR2T2Y=",
+        "lastModified": 1768782004,
+        "narHash": "sha256-c1GcJDiKgKfLwOYZx4eEYR0ZtP3UloMoj331yNvl4Mw=",
         "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats",
         "type": "path"
       },
