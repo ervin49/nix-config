@@ -4,25 +4,22 @@ local opt = vim.opt
 
 -- General UI
 opt.number        = true       -- Show absolute line numbers
-opt.cmdheight = 0
+opt.cmdheight     = 0
 opt.relativenumber= true       -- Show relative line numbers
 opt.cursorline    = true       -- Highlight current line
 opt.termguicolors = true       -- Enable true colors
 opt.syntax        = 'on'       -- Enable syntax highlighting
 opt.background    = 'dark'     -- Dark background
 opt.scrolloff     = 4          -- Lines to keep above/below cursor
-opt.shortmess:append("cFW")
 
 -- Indentation / Tabs
 opt.tabstop       = 4          -- Tab width
 opt.shiftwidth    = 4          -- Indent width
 opt.expandtab     = true       -- Use spaces instead of tabs
 opt.smartindent   = true       -- Smart auto-indent
-opt.iskeyword:append("-")      -- Treat dash as part of a word
 
 -- Editing behavior
 opt.autowrite     = true       -- Auto-save before commands
-opt.ignorecase    = true       -- Ignore case in search
 opt.smartcase     = true       -- Override ignorecase if uppercase
 opt.swapfile      = false      -- Disable swap files
 
