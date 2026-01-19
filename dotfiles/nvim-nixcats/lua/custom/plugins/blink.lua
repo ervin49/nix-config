@@ -6,24 +6,24 @@ end
 blink.setup({
     -- === SECTIUNEA NOUA: Logica pentru Quotes/Comments ===
     enabled = function()
-        -- 1. Verifică dacă suntem într-un buffer de tip prompt (ex: Telescope) și oprește
+        -- 1. Dezactivăm în prompt-uri (Telescope, etc.)
         if vim.bo.buftype == 'prompt' then return false end
-
-        -- 2. Încearcă să obțină nodul curent de la Treesitter
-        local success, node = pcall(vim.treesitter.get_node)
         
-        -- Dacă treesitter nu merge sau nu există nod, lăsăm completarea pornită (fallback)
-        if not success or not node then return true end
+        -- 2. Verificăm dacă suntem în Command Line mode
+        if vim.api.nvim_get_mode().mode == 'c' then return true end
 
-        -- Lista de tipuri de noduri unde NU vrem completare
-        local ignore_types = { 
-            'string', 'string_content', -- Pentru ghilimele
-            'comment', 'line_comment', 'block_comment' -- Pentru comentarii
-        }
-
-        -- Dacă tipul nodului curent este în listă, oprim blink
-        if vim.tbl_contains(ignore_types, node:type()) then
-            return false
+        -- 3. Logica de Treesitter pentru Quotes și Comentarii
+        local success, node = pcall(vim.treesitter.get_node)
+        if success and node then
+            -- Verificăm nodul curent ȘI părinții lui (pentru a prinde string_content)
+            local cur_node = node
+            while cur_node do
+                local type = cur_node:type()
+                if type:find("string") or type:find("comment") then
+                    return false
+                end
+                cur_node = cur_node:parent()
+            end
         end
 
         return true
