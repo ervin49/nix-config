@@ -9,10 +9,15 @@ local capabilities = blink_status and blink.get_lsp_capabilities() or {}
 ---------------------------------------
 -- Definim configuratia
 vim.lsp.config('clangd', {
-    cmd = { 'clangd' },
-    filetypes = { "h", "c", "cpp", "objc", "objcpp" },
-    root_markers = { '.git', 'compile_commands.json', 'compile_flags.txt' },
-    capabilities = capabilities,
+    cmd = { 'clangd',
+    "--background-index",
+    "--query-driver=/run/current-system/sw/bin/g++,/run/current-system/sw/bin/gcc",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+},
+filetypes = { "h", "c", "cpp", "objc", "objcpp" },
+root_markers = { '.git', 'compile_commands.json', 'compile_flags.txt' },
+capabilities = capabilities,
 })
 
 -- Activam serverul
@@ -37,7 +42,7 @@ vim.lsp.enable('jdtls')
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local opts = { buffer = event.buf }
-        
+
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
