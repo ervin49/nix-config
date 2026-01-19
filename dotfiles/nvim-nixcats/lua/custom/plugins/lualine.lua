@@ -16,6 +16,7 @@ section_separators = { left = '', right = '' },
         lualine_a = {'mode'},
         lualine_b = {'diff', 'diagnostics'},
         lualine_c = {'filename'},
+        lualine_y = {},
         lualine_x = {'filetype'},
         lualine_z = {'location'}
     },

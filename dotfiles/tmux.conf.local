@@ -1,39 +1,39 @@
 # : << EOF
 
-# -- bindings & general --------------------------------------------------------
-
+# bindings
 set -g prefix C-space
 set-option -g mouse on
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 bind-key -T prefix x kill-pane
 set -g focus-events on
+set -s escape-time 0
 set-option -g status-position top
 
-# Fix culori și transparență
+# colors
 set -g default-terminal "xterm-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
-# -- plugins -------------------------------------------------------------------
-
+# plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'jaclu/tmux-menus'
 set -g @menus_trigger 'm'
 
-# CONFIGURARE ROSE PINE
+# colorscheme
 set -g @plugin 'rose-pine/tmux'
-set -g @rose_pine_variant 'main' # Poate fi 'main', 'moon' sau 'dawn'
+set -g @rose_pine_variant 'main' 
+set -g @rose_pine_window_separator ' '
+set -g @rose_pine_only_windows 'on' 
+set -g @rose_pine_window_status_separator " | " 
 
-
-# -- Oh my tmux! core (necesar pentru logica interna) --------------------------
-
+# others
 tmux_conf_preserve_stock_bindings=false
 tmux_conf_new_session_prompt=false
 tmux_conf_24b_colour=true
 tmux_conf_copy_to_os_clipboard=false
 
-# Initialize TMUX plugin manager (keep this at the very bottom)
+# tmux plugin manager
 run '~/.tmux/plugins/tpm/tpm'
 
 # EOF
