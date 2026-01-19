@@ -2,38 +2,42 @@
 local blink_status, blink = pcall(require, "blink.cmp")
 local capabilities = blink_status and blink.get_lsp_capabilities() or {}
 
--- NOTA: Nu mai folosim require('lspconfig') aici, folosim API-ul nativ vim.lsp
+-- NOTA: Folosim API-ul nativ vim.lsp (specific Neovim modern/nightly)
 
 ---------------------------------------
--- 1. Configurare CLANGD (C/C++)
+-- 1. Configurare CCLS (C/C++)
 ---------------------------------------
--- Definim configuratia
-vim.lsp.config('clangd', {
-    cmd = { 'clangd',
-    "--background-index",
-    "--query-driver=/run/current-system/sw/bin/g++,/run/current-system/sw/bin/gcc",
-    "--clang-tidy",
-    "--header-insertion=iwyu",
-},
-filetypes = { "h", "c", "cpp", "objc", "objcpp" },
-root_markers = { '.git', 'compile_commands.json', 'compile_flags.txt' },
-capabilities = capabilities,
+-- Inlocuim blocul clangd cu ccls
+vim.lsp.config('ccls', {
+    cmd = { 'ccls' },
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    -- Este CRITIC sa ai '.ccls' aici, ca sa stie unde e radacina proiectului
+    root_markers = { '.ccls', 'compile_commands.json', '.git' }, 
+    capabilities = capabilities,
+    init_options = {
+        compilationDatabaseDirectory = ".", -- Cauta json-ul daca exista
+        index = {
+            threads = 0, -- Foloseste toate nucleele CPU
+        },
+        clang = {
+            excludeArgs = { "-frounding-math" }, -- Fix pentru erori comune
+        },
+    },
 })
 
--- Activam serverul
-vim.lsp.enable('clangd')
+-- Activam serverul CCLS
+vim.lsp.enable('ccls')
 
 ---------------------------------------
 -- 2. Configurare JDTLS (Java)
 ---------------------------------------
 vim.lsp.config('jdtls', {
     cmd = { 'jdtls' },
-    -- root_markers inlocuieste root_dir in noua versiune
     root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }, 
     capabilities = capabilities,
 })
 
--- Activam serverul
+-- Activam serverul JDTLS
 vim.lsp.enable('jdtls')
 
 ---------------------------------------
