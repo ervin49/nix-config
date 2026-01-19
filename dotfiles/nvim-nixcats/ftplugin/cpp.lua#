@@ -1,21 +1,31 @@
 local lspconfig = require('lspconfig')
 local capabilities = require('blink.cmp').default_capabilities()
+
+-- Funcția ta pentru formatare la salvare
 local on_attach = function(client, bufnr)
     if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({ async = true })
+                -- Sfat: 'async = false' e de obicei mai sigur la save, 
+                -- ca să termine formatarea înainte să scrie fișierul.
+                vim.lsp.buf.format({ async = false }) 
             end,
         })
     end
 end
 
-lspconfig.clangd.setup {
+-- === CONFIGURAREA CCLS ===
+lspconfig.ccls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = {
-        "clangd",
-        "--fallback-style=Webkit",
+    init_options = {
+        compilationDatabaseDirectory = ".", -- Caută compile_commands.json în root
+        index = {
+            threads = 0, -- Folosește toate nucleele procesorului pentru indexare
+        },
+        clang = {
+            excludeArgs = { "-frounding-math" }, -- Ignoră argumente care fac ccls să crape uneori
+        },
     }
 }
