@@ -2,13 +2,9 @@
 
 # bindings
 set -g prefix C-space
-set-option -g mouse on
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 bind-key -T prefix x kill-pane
-set -g focus-events on
-set -s escape-time 0
-set-option -g status-position top
 
 # colors
 set -g default-terminal "xterm-256color"
@@ -28,6 +24,10 @@ set -g @rose_pine_only_windows 'on'
 set -g @rose_pine_window_status_separator " | " 
 
 # others
+set-option -g mouse on
+set -g focus-events on
+set -s escape-time 0
+set-option -g status-position top
 tmux_conf_preserve_stock_bindings=false
 tmux_conf_new_session_prompt=false
 tmux_conf_24b_colour=true
