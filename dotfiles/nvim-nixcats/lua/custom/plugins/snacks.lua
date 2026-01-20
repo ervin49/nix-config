@@ -11,14 +11,15 @@ return {
         opts = {
             -- === Module Activate ===
             bigfile = { enabled = true },      -- Optimizează deschiderea fișierelor mari
-            dashboard = { enabled = false },    -- Ecran de pornire frumos
-            indent = { enabled = true },       -- Linii de indentare (înlocuiește indent-blankline)
-            input = { enabled = true },        -- UI mai bun pentru input/rename
-            notifier = { enabled = false },     -- Notificări (înlocuiește nvim-notify)
             quickfile = { enabled = true },    -- Încarcă rapid fișierele
-            scroll = { enabled = true },       -- Scroll fin (smooth scrolling)
-            statuscolumn = { enabled = true }, -- Coloana din stânga (git signs, line numbers)
-            words = { enabled = true },        -- Highlight la cuvinte similare sub cursor
+            input = { enabled = true },        -- UI mai bun pentru input/rename
+
+            dashboard = { enabled = false },    -- Ecran de pornire frumos
+            indent = { enabled = false },       -- Linii de indentare (înlocuiește indent-blankline)
+            notifier = { enabled = false },     -- Notificări (înlocuiește nvim-notify)
+            scroll = { enabled = false },       -- Scroll fin (smooth scrolling)
+            statuscolumn = { enabled = false }, -- Coloana din stânga (git signs, line numbers)
+            words = { enabled = false },        -- Highlight la cuvinte similare sub cursor
 
             -- === PICKER (Înlocuitorul Telescope) ===
             picker = {
