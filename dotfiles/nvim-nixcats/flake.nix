@@ -110,6 +110,7 @@
 
             theming = with pkgs.vimPlugins; [
                     gruvbox-material
+                        snacks-nvim
                     lualine-nvim
                     vim-highlightedyank
                     transparent-nvim

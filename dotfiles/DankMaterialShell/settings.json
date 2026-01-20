@@ -3,15 +3,15 @@
   "currentThemeCategory": "generic",
   "customThemeFile": "",
   "registryThemeVariants": {},
-  "matugenScheme": "scheme-fidelity",
+  "matugenScheme": "scheme-neutral",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
   "dockTransparency": 1,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
-  "cornerRadius": 12,
-  "niriLayoutGapsOverride": -1,
+  "cornerRadius": 0,
+  "niriLayoutGapsOverride": 0,
   "niriLayoutRadiusOverride": -1,
   "niriLayoutBorderSize": -1,
   "hyprlandLayoutGapsOverride": -1,
@@ -110,7 +110,7 @@
   "workspaceScrolling": false,
   "showWorkspaceApps": true,
   "maxWorkspaceIcons": 3,
-  "groupWorkspaceApps": true,
+  "groupWorkspaceApps": false,
   "workspaceFollowFocus": false,
   "showOccupiedWorkspacesOnly": true,
   "reverseScrolling": false,
@@ -178,7 +178,7 @@
     "theme": "System Default",
     "size": 24,
     "niri": {
-      "hideWhenTyping": false,
+      "hideWhenTyping": true,
       "hideAfterInactiveMs": 0
     },
     "hyprland": {
@@ -276,7 +276,7 @@
   "dockBorderThickness": 1,
   "dockIsolateDisplays": false,
   "notificationOverlayEnabled": false,
-  "modalDarkenBackground": true,
+  "modalDarkenBackground": false,
   "lockScreenShowPowerActions": true,
   "lockScreenShowSystemIcons": true,
   "lockScreenShowTime": true,
@@ -396,8 +396,10 @@
       "openOnOverview": false,
       "visible": true,
       "popupGapsAuto": true,
-      "popupGapsManual": 4,
-      "maximizeDetection": true
+      "popupGapsManual": 48,
+      "maximizeDetection": true,
+      "shadowOpacity": 10,
+      "scrollYBehavior": "workspace"
     }
   ],
   "desktopClockEnabled": false,

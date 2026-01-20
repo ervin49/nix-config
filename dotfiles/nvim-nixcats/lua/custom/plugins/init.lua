@@ -1,6 +1,7 @@
 require("custom.plugins.lualine")
 require("custom.plugins.harpoon")
 require("custom.plugins.trouble")
+require("custom.plugins.snacks")
 require("custom.plugins.transparent")
 require("custom.plugins.themery")
 require("custom.plugins.oil")
