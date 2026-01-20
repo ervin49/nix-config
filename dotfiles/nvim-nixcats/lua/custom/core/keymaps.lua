@@ -21,7 +21,7 @@ vim.api.nvim_create_user_command('CompileAndRunJava', compile_and_run_java, {}) 
 -- Keymaps
 local keymap = vim.keymap.set
 keymap('n', '<leader>tt', ':Themery<CR>', { noremap = true, silent = true })               -- Theme switcher
-keymap('n', '<leader>n', ':norm' )
+keymap('v', '<leader>n', ':norm' )
 keymap('n', '<leader>i', 'ggVG=<C-O>', { noremap = true, silent = true })                 -- Auto indent buffer
 keymap('n', '<leader>e', ':Oil<CR>', { noremap = true, silent = true })                   -- Open Oil file explorer
 keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })                     -- Save file
