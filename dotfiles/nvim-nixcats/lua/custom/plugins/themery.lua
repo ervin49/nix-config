@@ -3,7 +3,7 @@ return {
     "zaldih/themery.nvim",
     
     -- 1. Verificare NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
 
     -- 2. Configurare
     config = function()

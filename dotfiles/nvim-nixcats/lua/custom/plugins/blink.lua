@@ -2,7 +2,7 @@ return {
   {
     "saghen/blink.cmp",
     -- 1. Verificăm cu NixCats dacă pluginul e instalat
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
 
     -- 2. Blink e critic pentru editare, deci nu îl încărcăm "lazy" (îl vrem la pornire)
     lazy = false, 

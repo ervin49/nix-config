@@ -4,7 +4,7 @@ return {
     branch = "harpoon2",
     
     -- Verificăm cu NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
 
     -- Dependențe: Harpoon are nevoie doar de plenary
     dependencies = { "nvim-lua/plenary.nvim" },

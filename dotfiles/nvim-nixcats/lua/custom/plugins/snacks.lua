@@ -5,16 +5,16 @@ return {
     lazy = false,    -- Nu vrem lazy loading la dashboard
     
     -- 1. Verificare NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
 
     ---@type snacks.Config
     opts = {
       -- === Module Activate ===
       bigfile = { enabled = true },      -- Optimizează deschiderea fișierelor mari
-      dashboard = { enabled = true },    -- Ecran de pornire frumos
+      dashboard = { enabled = false },    -- Ecran de pornire frumos
       indent = { enabled = true },       -- Linii de indentare (înlocuiește indent-blankline)
       input = { enabled = true },        -- UI mai bun pentru input/rename
-      notifier = { enabled = true },     -- Notificări (înlocuiește nvim-notify)
+      notifier = { enabled = false },     -- Notificări (înlocuiește nvim-notify)
       quickfile = { enabled = true },    -- Încarcă rapid fișierele
       scroll = { enabled = true },       -- Scroll fin (smooth scrolling)
       statuscolumn = { enabled = true }, -- Coloana din stânga (git signs, line numbers)
@@ -35,13 +35,12 @@ return {
     -- === Scurtături (Keymaps) ===
     keys = {
       -- :: Căutare Fișiere (Picker)
-      { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-      { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-      { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep (Căutare text)" },
+      { "<leader><leader>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+      { "<leader>g", function() Snacks.picker.grep() end, desc = "Grep (Căutare text)" },
       { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent Files" },
       
       -- :: Buffere
-      { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
 
       -- :: Git
       { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
@@ -55,11 +54,7 @@ return {
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
       
       -- :: Terminal
-      { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
-      { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
-    },
-    
-    -- Inițializare pentru comenzi speciale (ex: debugging, reîncărcare config)
+      { "<leader>t",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
     init = function()
       vim.api.nvim_create_user_command("Snacks", function(opts)
         Snacks.picker(opts.args)

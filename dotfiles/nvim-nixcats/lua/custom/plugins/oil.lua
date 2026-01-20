@@ -3,7 +3,7 @@ return {
     "stevearc/oil.nvim",
     
     -- 1. Verificare NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
 
     -- 2. Dependențe (pentru iconițe)
     dependencies = { "nvim-tree/nvim-web-devicons" },

@@ -3,7 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     
     -- 1. Verificăm cu NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
     
     -- 2. Declarăm dependența de Blink (ca să avem capabilitățile gata încărcate)
     dependencies = { "saghen/blink.cmp" },

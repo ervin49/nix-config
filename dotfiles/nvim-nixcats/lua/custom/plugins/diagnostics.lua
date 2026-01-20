@@ -3,7 +3,7 @@ return {
     "rachartier/tiny-inline-diagnostic.nvim",
     
     -- 1. Verificare NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
     
     -- 2. Încărcare: "VeryLazy" sau la evenimentul "LspAttach" e cel mai sigur
     event = "VeryLazy", 

@@ -3,7 +3,7 @@ return {
     "sainnhe/gruvbox-material",
     
     -- 1. Verificare NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
     
     -- 2. Setări critice pentru temă
     lazy = false,    -- NU vrem lazy loading, tema trebuie să apară instant
