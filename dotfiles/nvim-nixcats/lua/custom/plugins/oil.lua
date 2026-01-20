@@ -1,17 +1,13 @@
-return {
-    "oil.nvim", -- Numele plugin-ului (cum e definit în nixCats)
-    on_cmd = "Oil", -- Se încarcă doar când rulezi comanda :Oil
-    -- on_ft = "directory", -- Sau când deschizi un director
-    load = function()
-        require("oil").setup({
-            default_file_explorer = true,
-            columns = {
-                "icon",
-            },
-            view_options = {
-                show_hidden = true,
-            },
-            skip_confirm_for_simple_edits = true,
-        })
-    end,
-}
+-- Creăm o comandă de utilizator care încarcă plugin-ul la prima rulare
+vim.api.nvim_create_user_command('Oil', function()
+    -- 1. Încărcăm plugin-ul în runtimepath
+    require('nixCats').pawsible.load({'oil.nvim'})
+    -- 2. Rulăm setup-ul
+    require('oil').setup({
+        columns = { "icon" },
+    })
+    -- 3. Executăm comanda efectivă
+    vim.cmd('Oil')
+    -- 4. Ștergem această comandă temporară pentru a nu rula setup-ul de două ori
+    vim.api.nvim_del_user_command('Oil')
+end, {})
