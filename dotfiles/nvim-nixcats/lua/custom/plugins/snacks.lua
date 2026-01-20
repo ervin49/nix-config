@@ -42,16 +42,6 @@ return {
             -- :: Buffere
             { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
 
-            -- :: Git
-            { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
-            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-            { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit Toggle" },
-
-            -- :: Utilitare
-            { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-            { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Pad" },
-            { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
-            { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
 
             -- :: Terminal
             { "<leader>t",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
