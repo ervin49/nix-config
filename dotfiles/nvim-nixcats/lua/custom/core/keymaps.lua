@@ -33,7 +33,7 @@ keymap('v', 'J', ':m \'>+1<CR>gv=gv', { noremap = true, silent = true })        
 keymap('v', 'K', ':m \'<-2<CR>gv=gv', { noremap = true, silent = true })                  -- Move selection up
 keymap('n', '<leader><leader>', '<C-^>', { noremap = true, silent = true })               -- Switch to last buffer
 keymap('n', '<leader>ff', require('telescope.builtin').find_files, {})                     -- Find files
-keymap('n', '<leader>fg', require('telescope.builtin').live_grep, {})                     -- Live grep
+keymap('n', '<leader>g', require('telescope.builtin').live_grep, {})                     -- Live grep
 keymap('n', '<leader>fb', require('telescope.builtin').buffers, {})                       -- List buffers
 keymap('n', '<leader>fh', require('telescope.builtin').help_tags, {})                     -- Help tags search
 keymap('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_find, {})     -- Fuzzy search in buffer

@@ -5,6 +5,12 @@ set -g prefix C-space
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 bind-key -T prefix x kill-pane
+bind -n M-c new-window -c "#{pane_current_path}"
+bind -n M-1 select-window -t 1
+bind -n M-2 select-window -t 2
+bind -n M-3 select-window -t 3
+bind -n M-4 select-window -t 4
+bind -n M-x kill-pane
 
 # colors
 set -g default-terminal "xterm-256color"

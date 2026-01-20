@@ -153,6 +153,12 @@ in
         theme = "rose_pine";
 
         settings = {
+            window = {
+                padding = {
+                    x = 0;
+                    y = 0;
+                };
+            };
             font = {
                 size = if isDesktop then 14.0 else 16.0;
                 normal = {
