@@ -1,7 +1,6 @@
 return {
     "lualine.nvim",
     -- Folosim for_cat dacă vrei să respecți structura nixCats din documentație
-    event = "DeferredUIEnter",
     after = function()
         -- require-ul trebuie să fie INSIDE funcției after sau load
         -- astfel încât să ruleze doar DUPĂ ce lze a încărcat plugin-ul

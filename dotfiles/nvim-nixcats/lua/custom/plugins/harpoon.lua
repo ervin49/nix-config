@@ -1,7 +1,6 @@
 return {
     "harpoon2", -- Numele plugin-ului din flake.nix (probabil harpoon2 sau harpoon)
     -- Plugin-ul se încarcă DOAR când apeși una dintre aceste taste
-    keys = { "<leader>a", "<C-e>", "<C-j>", "<C-k>", "<C-l>", "<C-;>" },
     load = function()
         local harpoon = require("harpoon")
         
