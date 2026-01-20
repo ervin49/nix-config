@@ -111,8 +111,6 @@
 
             theming = with pkgs.vimPlugins; [
                     gruvbox-material
-                    themery-nvim
-                    lualine-nvim
                         snacks-nvim
                         oil-nvim
                     vim-highlightedyank
@@ -129,13 +127,11 @@
             ]; 
 
             code = with pkgs.vimPlugins; [
-                nvim-treesitter.withAllGrammars
                     nvim-autopairs
                     tiny-inline-diagnostic-nvim
                     blink-cmp 
                     vim-commentary
                     vim-gitgutter
-                    which-key-nvim
             ];
 
             lsp = with pkgs.vimPlugins; [
@@ -153,6 +149,10 @@
         optionalPlugins = {
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
+                nvim-treesitter.withAllGrammars
+                    themery-nvim
+                    lualine-nvim
+                    which-key-nvim
             ];
         };
 
