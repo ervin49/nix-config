@@ -1,62 +1,81 @@
-require("snacks").setup({
-    -- 1. INPUT: Activăm pentru rename frumos
-    input = { enabled = true },
+    local snacks = require("snacks")
 
-    -- 2. PICKER: Activăm pentru căutări și meniuri
-    picker = { enabled = true },
+    snacks.setup({
+        -- === UI ESSENTIALS (Înlocuitor Noice) ===
+        input = { enabled = true },    -- Înlocuiește fereastra de Rename din Noice
+        notifier = { enabled = true }, -- Înlocuiește notificările din Noice (dacă pui false, apar jos ca text simplu)
+        
+        -- === SEARCH ENGINE (Înlocuitor Telescope / Trouble) ===
+        picker = { enabled = true },
 
-    -- 3. Dezactivăm tot restul (Minimalist)
-    bigfile = { enabled = false },
-    dashboard = { enabled = false },
-    explorer = { enabled = false },
-    indent = { enabled = false },
-    notifier = { enabled = false },
-    quickfile = { enabled = false },
-    scope = { enabled = false },
-    scroll = { enabled = false },
-    statuscolumn = { enabled = false },
-    words = { enabled = false },
-    styles = {},
-})
+        -- === PERFORMANCE (Invizibile, dar critice) ===
+        bigfile = { enabled = true },   -- Previne blocarea la fișiere mari (LSP off automat)
+        quickfile = { enabled = true }, -- Îmbunătățește viteza de start la deschiderea unui fișier
 
--- 4. Keybind-uri Noi (Fără <leader>f)
-local map = vim.keymap.set
-local picker = require("snacks").picker
+        -- === MINIMALISM (Restul dezactivate) ===
+        dashboard = { enabled = false },
+        explorer = { enabled = false }, -- Folosești Oil sau altceva
+        indent = { enabled = false },
+        scope = { enabled = false },
+        scroll = { enabled = false },
+        statuscolumn = { enabled = false },
+        words = { enabled = false },
+        styles = {},
+    })
 
--- === ACȚIUNI RAPIDE (Taste "Prime") ===
+    -- === KEYBINDS ===
+    local map = vim.keymap.set
+    local picker = snacks.picker
 
--- <leader> + SPATIU: Găsește fișiere (cel mai rapid mod, ca Ctrl+P in VSCode)
-map("n", "<leader><space>", function() picker.files() end, { desc = "Find Files (Smart)" })
+    -- 1. NAVIGARE RAPIDĂ (Tastele cele mai folosite)
+    
+    -- <leader> + SPATIU: Find Files (Smart)
+    -- E cea mai ergonomică tastă. Înlocuiește Telescope Find Files.
+    map("n", "<leader><space>", function() picker.files() end, { desc = "Find Files" })
 
--- <leader> + /: Caută text în tot proiectul (Live Grep)
-map("n", "<leader>/", function() picker.grep() end, { desc = "Grep Text" })
+    -- <leader> + g: Grep (Căutare text)
+    -- Înlocuiește Telescope Live Grep.
+    map("n", "<leader>g", function() picker.grep() end, { desc = "Grep Text" })
 
--- <leader> + ,: Listă Buffere deschise (pentru switch rapid)
-map("n", "<leader>,", function() picker.buffers() end, { desc = "Switch Buffer" })
-
-
--- === GRUPUL "SEARCH" (<leader>s...) ===
-
--- <leader>sr -> Search Recent (Fișiere recente)
-map("n", "<leader>sr", function() picker.recent() end, { desc = "Recent Files" })
-
--- <leader>sd -> Search Diagnostics (Erori în proiect)
-map("n", "<leader>sd", function() picker.diagnostics() end, { desc = "Diagnostics" })
-
--- <leader>ss -> Search Symbols (Funcții/Clase în fișierul curent)
-map("n", "<leader>ss", function() picker.lsp_symbols() end, { desc = "LSP Symbols" })
+    -- <leader> + b: Buffers
+    -- Switch rapid între fișiere deschise.
+    map("n", "<leader>b", function() picker.buffers() end, { desc = "Switch Buffer" })
 
 
--- === CODING (LSP) ===
+    -- 2. GRUPUL "SEARCH" (Tot ce ține de căutări secundare)
+    
+    -- <leader>sr: Recent Files
+    -- Util când redeschizi proiectul.
+    map("n", "<leader>sr", function() picker.recent() end, { desc = "Recent Files" })
 
--- <leader>ca -> Code Action (Meniul frumos)
-map({ "n", "v" }, "<leader>ca", function() picker.lsp_code_actions() end, { desc = "Code Action" })
+    -- <leader>sd: Diagnostics (Înlocuitor Trouble)
+    -- Arată toate erorile din proiect într-o listă.
+    map("n", "<leader>sd", function() picker.diagnostics() end, { desc = "Diagnostics" })
 
--- <leader>rn -> Rename (Input frumos)
-map("n", "<leader>rn", function() require("snacks").rename.rename_file() end, { desc = "Rename File" })
+    -- <leader>ss: Symbols
+    -- Arată funcțiile/clasele din fișierul curent (Outline).
+    map("n", "<leader>ss", function() picker.lsp_symbols() end, { desc = "LSP Symbols" })
 
--- <leader>gd -> Go to Definition (în fereastră picker, ca să nu pierzi contextul)
-map("n", "gd", function() picker.lsp_definitions() end, { desc = "Goto Definition" })
 
--- <leader>gr -> Go to References (unde e folosita funcția)
-map("n", "gr", function() picker.lsp_references() end, { desc = "References" })
+    -- 3. LSP & CODING (Interacțiune cu codul)
+    
+    -- <leader>ca: Code Actions
+    -- Meniul pentru fix-uri rapide (importuri, refactor).
+    map({ "n", "v" }, "<leader>ca", function() picker.lsp_code_actions() end, { desc = "Code Action" })
+
+    -- <leader>rn: Rename
+    -- Folosește fereastra 'input' activată mai sus.
+    map("n", "<leader>rn", function() snacks.rename.rename_file() end, { desc = "Rename File" })
+
+    -- gd: Go to Definition
+    -- Deschide definiția într-un picker (ca să nu pierzi locul unde erai).
+    map("n", "gd", function() picker.lsp_definitions() end, { desc = "Goto Definition" })
+
+    -- gr: Go to References
+    -- Arată toate locurile unde e folosită funcția.
+    map("n", "gr", function() picker.lsp_references() end, { desc = "References" })
+    
+    
+    map("n", "<leader>gg", function() snacks.lazygit() end, { desc = "Lazygit" })
+    
+    map("n", "<C-/>", function() snacks.terminal() end, { desc = "Toggle Terminal" })

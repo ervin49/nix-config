@@ -31,13 +31,4 @@ keymap('n', '<leader>x', ':CompileAndRunTerminal<CR>', { noremap = true, silent 
 keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })                        -- Copy to clipboard
 keymap('v', 'J', ':m \'>+1<CR>gv=gv', { noremap = true, silent = true })                  -- Move selection down
 keymap('v', 'K', ':m \'<-2<CR>gv=gv', { noremap = true, silent = true })                  -- Move selection up
-keymap('n', '<leader><leader>', '<C-^>', { noremap = true, silent = true })               -- Switch to last buffer
-keymap('n', '<leader>ff', require('telescope.builtin').find_files, {})                     -- Find files
-keymap('n', '<leader>g', require('telescope.builtin').live_grep, {})                     -- Live grep
-keymap('n', '<leader>fb', require('telescope.builtin').buffers, {})                       -- List buffers
-keymap('n', '<leader>fh', require('telescope.builtin').help_tags, {})                     -- Help tags search
-keymap('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_find, {})     -- Fuzzy search in buffer
-keymap('n', '<leader>fo', require('telescope.builtin').lsp_document_symbols, {})         -- LSP document symbols
-keymap('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {})           -- LSP incoming calls
 keymap('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })             -- Go to definition
-keymap("n", "<leader>c", "<cmd>NvimTreeFocus<cr>")                                       -- Focus NvimTree

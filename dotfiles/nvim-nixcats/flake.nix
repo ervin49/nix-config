@@ -98,6 +98,7 @@
 # this includes LSPs
         lspsAndRuntimeDeps = {
             general = with pkgs; [
+                fd
             ];
         };
 
@@ -115,16 +116,12 @@
                     vim-highlightedyank
                     transparent-nvim
                     themery-nvim
-                    noice-nvim
-                    nui-nvim
             ];
 
             navigation = with pkgs.vimPlugins; [
                 plenary-nvim        
                     nvim-web-devicons
-                    telescope-nvim
                     vim-tmux-navigator
-                    telescope-fzf-native-nvim
                     oil-nvim
                     flash-nvim
                     vim-cool
@@ -134,7 +131,6 @@
             code = with pkgs.vimPlugins; [
                 nvim-treesitter.withAllGrammars
                     nvim-autopairs
-                    trouble-nvim
                     vim-commentary
                     vim-gitgutter
                     which-key-nvim
