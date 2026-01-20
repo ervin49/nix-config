@@ -1,11 +1,6 @@
-local status_ok, themery = pcall(require, "themery")
-if not status_ok then
-    return
-end
-
 return {
     "themery.nvim",
-    cmd = {"Themery"},
+    cmd = { "Themery" },
     load = function()
         require("themery").setup({
             livePreview = true,

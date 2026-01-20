@@ -1,13 +1,11 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-    return
-end
-
 return {
     "lualine.nvim",
+    -- Folosim for_cat dacă vrei să respecți structura nixCats din documentație
     event = "DeferredUIEnter",
-    load = function()
-        lualine.setup {
+    after = function()
+        -- require-ul trebuie să fie INSIDE funcției after sau load
+        -- astfel încât să ruleze doar DUPĂ ce lze a încărcat plugin-ul
+        require('lualine').setup {
             options = {
                 icons_enabled = true,
                 theme = 'auto',
