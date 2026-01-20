@@ -112,17 +112,14 @@
             theming = with pkgs.vimPlugins; [
                     gruvbox-material
                         snacks-nvim
-                    lualine-nvim
                     vim-highlightedyank
                     transparent-nvim
-                    themery-nvim
             ];
 
             navigation = with pkgs.vimPlugins; [
                 plenary-nvim        
                     nvim-web-devicons
                     vim-tmux-navigator
-                    oil-nvim
                     flash-nvim
                     vim-cool
                     harpoon2
@@ -138,12 +135,11 @@
 
             lsp = with pkgs.vimPlugins; [
                 nvim-lspconfig
-                    tiny-inline-diagnostic-nvim
                     friendly-snippets
-                    blink-cmp 
             ];
 
             others = with pkgs.vimPlugins;[
+                lze
             ];
         };
 
@@ -151,7 +147,13 @@
 # use with packadd and an autocommand in config to achieve lazy loading
         optionalPlugins = {
             gitPlugins = with pkgs.neovimPlugins; [ ];
-            general = with pkgs.vimPlugins; [ ];
+            general = with pkgs.vimPlugins; [
+                    themery-nvim
+                    blink-cmp 
+                    lualine-nvim
+                    oil-nvim
+                    tiny-inline-diagnostic-nvim
+            ];
         };
 
 # shared libraries to be added to LD_LIBRARY_PATH
