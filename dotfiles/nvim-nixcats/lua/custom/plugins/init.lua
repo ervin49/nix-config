@@ -2,6 +2,7 @@
 return {
   -- Aici importăm modulele pe care le-am creat
   require("custom.plugins.lualine"),
+  require("custom.plugins.colorscheme"),
   require("custom.plugins.snacks"),
   require("custom.plugins.harpoon"),
   require("custom.plugins.themery"),
