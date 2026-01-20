@@ -123,19 +123,15 @@
                     vim-tmux-navigator
                     flash-nvim
                     vim-cool
-                    harpoon2
             ]; 
 
             code = with pkgs.vimPlugins; [
-                    nvim-autopairs
                     tiny-inline-diagnostic-nvim
-                    blink-cmp 
                     vim-commentary
                     vim-gitgutter
             ];
 
             lsp = with pkgs.vimPlugins; [
-                nvim-lspconfig
                     friendly-snippets
             ];
 
@@ -153,7 +149,11 @@
                 nvim-treesitter.withAllGrammars
                     themery-nvim
                     lualine-nvim
+                    blink-cmp 
+                    harpoon2
+                    nvim-autopairs
                     which-key-nvim
+                nvim-lspconfig
             ];
         };
 
