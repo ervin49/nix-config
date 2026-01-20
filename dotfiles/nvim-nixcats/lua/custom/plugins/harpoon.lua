@@ -1,4 +1,4 @@
-local harpoon = require("harpoon")
+local harpoon = require("harpoon2")
 
 -- Setup obligatoriu pentru Harpoon v2
 harpoon:setup()
