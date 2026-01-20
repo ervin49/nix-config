@@ -115,6 +115,8 @@
                         oil-nvim
                     vim-highlightedyank
                     transparent-nvim
+                    themery-nvim
+                    lualine-nvim
             ];
 
             navigation = with pkgs.vimPlugins; [
@@ -129,6 +131,12 @@
                     tiny-inline-diagnostic-nvim
                     vim-commentary
                     vim-gitgutter
+                    harpoon2
+                    blink-cmp 
+                    nvim-autopairs
+                nvim-treesitter.withAllGrammars
+                    which-key-nvim
+                nvim-lspconfig
             ];
 
             lsp = with pkgs.vimPlugins; [
@@ -144,14 +152,6 @@
         optionalPlugins = {
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
-                nvim-treesitter.withAllGrammars
-                    themery-nvim
-                    lualine-nvim
-                    harpoon2
-                    blink-cmp 
-                    nvim-autopairs
-                    which-key-nvim
-                nvim-lspconfig
             ];
         };
 
