@@ -40,4 +40,4 @@
     map("n", "gd", function() picker.lsp_definitions() end, { desc = "Goto Definition" })
     map("n", "gr", function() picker.lsp_references() end, { desc = "References" })
     
-    map("n", "<C-/>", function() snacks.terminal() end, { desc = "Toggle Terminal" })
+    map("n", "t", "<leader>t", function() snacks.terminal() end, { desc = "Toggle Terminal" })
