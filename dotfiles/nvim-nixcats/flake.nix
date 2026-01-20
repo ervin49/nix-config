@@ -125,6 +125,8 @@
                     vim-tmux-navigator
                     flash-nvim
                     vim-cool
+                    telescope-nvim
+                    telescope-fzf-native-nvim
             ]; 
 
             code = with pkgs.vimPlugins; [
