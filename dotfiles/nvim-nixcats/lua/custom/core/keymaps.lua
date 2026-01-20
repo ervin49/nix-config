@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- Compile & Run
 local function compile_and_run_terminal()
     vim.cmd('write')

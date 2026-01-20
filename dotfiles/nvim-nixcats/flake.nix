@@ -147,6 +147,7 @@
             ];
 
             others = with pkgs.vimPlugins;[
+                lazy-nvim
             ];
         };
 
