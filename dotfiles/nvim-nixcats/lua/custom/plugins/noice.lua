@@ -3,7 +3,7 @@ return {
     "folke/noice.nvim",
     
     -- 1. Verificare NixCats
-    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    enabled = true,
     
     -- 2. Noice se încarcă de obicei cu "VeryLazy" pentru a prelua UI-ul rapid
     event = "VeryLazy",
