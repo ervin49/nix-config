@@ -15,6 +15,7 @@ in
     home.packages = with pkgs; [
 #cli tools
         ripgrep
+            fd
             bat
             fzf
             tmux
