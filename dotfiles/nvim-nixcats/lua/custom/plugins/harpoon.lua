@@ -1,4 +1,4 @@
-local harpoon = require("harpoon2")
+local harpoon = require("harpoon")
 
 -- Setup obligatoriu pentru Harpoon v2
 harpoon:setup()
@@ -30,7 +30,3 @@ vim.keymap.set("n", "<M-j>", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<M-k>", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<M-l>", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<M-;>", function() harpoon:list():select(4) end)
-
--- Opțional: Navigare previous/next
-vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
