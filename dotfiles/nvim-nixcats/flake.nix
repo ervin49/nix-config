@@ -149,8 +149,8 @@
                 nvim-treesitter.withAllGrammars
                     themery-nvim
                     lualine-nvim
-                    blink-cmp 
                     harpoon2
+                    blink-cmp 
                     nvim-autopairs
                     which-key-nvim
                 nvim-lspconfig
