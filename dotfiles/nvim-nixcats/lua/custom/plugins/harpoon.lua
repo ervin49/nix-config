@@ -1,31 +1,36 @@
--- Fisier: custom/plugins/harpoon.lua
-return {
-    -- 1. Numele pachetului din Nix. 
-    -- Daca in flake.nix ai pkgs.vimPlugins.harpoon2, lasa "harpoon2".
-    "harpoon2", 
+local harpoon = require("harpoon")
 
-    -- 2. ACESTA ESTE FIX-UL: Spunem lui lze ca atunci cand codul cere modulul "harpoon",
-    -- el trebuie sa activeze pachetul "harpoon2" din Nix.
-    on_require = { "harpoon" },
+-- Setup obligatoriu pentru Harpoon v2
+harpoon:setup()
 
-    -- 3. Triggere pentru incarcare: Plugin-ul porneste cand apesi aceste taste.
-    keys = {
-        { "<leader>a", function() require("harpoon"):list():add() end, desc = "Harpoon Add" },
-        { "<C-e>", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = "Harpoon Menu" },
-        { "<C-j>", function() require("harpoon"):list():select(1) end, desc = "Harpoon Select 1" },
-        { "<C-k>", function() require("harpoon"):list():select(2) end, desc = "Harpoon Select 2" },
-        { "<C-l>", function() require("harpoon"):list():select(3) end, desc = "Harpoon Select 3" },
-        { "<C-h>", function() require("harpoon"):list():select(4) end, desc = "Harpoon Select 4" },
-    },
+-- Configurare Keymaps (Esențial pentru Harpoon)
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
 
-    -- 4. Configurarea propriu-zisa: Se executa DOAR dupa ce pachetul e incarcat.
-    after = function()
-        local harpoon = require("harpoon")
-        harpoon:setup({
-            settings = {
-                save_on_toggle = true,
-                sync_on_ui_close = true,
-            },
-        })
-    end,
-}
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+-- Exemplu de mapări (modifică <leader>a după preferințe)
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Harpoon: Add file" })
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon: Toggle UI" })
+
+-- Navigare rapidă (fișierele 1-4)
+vim.keymap.set("n", "<M-j>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<M-k>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<M-l>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<M-;>", function() harpoon:list():select(4) end)
+
+-- Opțional: Navigare previous/next
+vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)

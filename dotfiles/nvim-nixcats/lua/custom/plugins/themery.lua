@@ -1,28 +1,24 @@
-return {
-    "themery.nvim",
-    -- Trigger: Încărcare doar la comandă
-    cmd = { "Themery" },
-    
-    -- Folosim after pentru a rula setup-ul după ce plugin-ul e în runtimepath
-    after = function()
-        require("themery").setup({
-            livePreview = true,
-            themes = {
-                {
-                    name = "gruvbox-material",
-                    colorscheme = "gruvbox-material",
-                    before = [[
-                        vim.opt.background = "dark"
-                    ]],
-                },
-                {
-                    name = "jetbrains",
-                    colorscheme = "jb",
-                    before = [[
-                        vim.opt.background = "dark"
-                    ]],
-                },
-            },
-        })
-    end,
-}
+local status_ok, themery = pcall(require, "themery")
+if not status_ok then
+    return
+end
+
+require("themery").setup({
+    livePreview = true,
+    themes = {
+        {
+            name = "gruvbox-material",
+            colorscheme = "gruvbox-material",
+            before = [[
+            vim.opt.background = "dark"
+            ]],
+        },
+        {
+            name = "jetbrains",
+            colorscheme = "jb",
+            before = [[
+            vim.opt.background = "dark"
+            ]],
+        },
+    },
+})

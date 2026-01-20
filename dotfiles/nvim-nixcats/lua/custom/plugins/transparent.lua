@@ -15,6 +15,16 @@ transparent.setup({
     
     -- AICI E CHEIA: Adaugă plugin-urile pe care le folosești ca să fie și ele transparente
     extra_groups = {
+        -- Telescope
+        "TelescopeNormal", 
+        "TelescopeBorder", 
+        "TelescopePromptBorder",
+        
+        -- Neo-tree / Nvim-tree
+        "NeoTreeNormal", 
+        "NeoTreeNormalNC",
+        "NvimTreeNormal",
+        
         -- Ferestre plutitoare (LSP, Mason, Lazy)
         "NormalFloat", 
         "FloatBorder",
