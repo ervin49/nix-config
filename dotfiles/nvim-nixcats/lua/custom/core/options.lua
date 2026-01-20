@@ -4,7 +4,7 @@ local opt = vim.opt
 
 -- General UI
 opt.number        = true       -- Show absolute line numbers
-opt.cmdheight     = 0
+opt.cmdheight     = 1
 opt.relativenumber= true       -- Show relative line numbers
 opt.cursorline    = true       -- Highlight current line
 opt.termguicolors = true       -- Enable true colors
