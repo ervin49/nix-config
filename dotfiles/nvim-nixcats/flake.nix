@@ -141,6 +141,7 @@
 
             others = with pkgs.vimPlugins;[
                 lze
+                    startup-nvim
             ];
         };
 
