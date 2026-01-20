@@ -1,12 +1,14 @@
-require("custom.plugins.lualine")
-require("custom.plugins.snacks")
-require("custom.plugins.harpoon")
-require("custom.plugins.trouble")
-require("custom.plugins.transparent")
-require("custom.plugins.themery")
-require("custom.plugins.oil")
-require("custom.plugins.blink")
-require("custom.plugins.noice")
-require("custom.plugins.diagnostics") 
-require("custom.plugins.lsp")
-require("custom.plugins.autopairs")
+-- lua/custom/plugins/init.lua
+return {
+  -- Aici importăm modulele pe care le-am creat
+  require("custom.plugins.lualine"),
+  require("custom.plugins.snacks"),
+  require("custom.plugins.harpoon"),
+  require("custom.plugins.themery"),
+  require("custom.plugins.oil"),
+  require("custom.plugins.blink"),
+  require("custom.plugins.noice"),
+  require("custom.plugins.diagnostics"),
+  require("custom.plugins.lsp"),
+  require("custom.plugins.autopairs"),
+}

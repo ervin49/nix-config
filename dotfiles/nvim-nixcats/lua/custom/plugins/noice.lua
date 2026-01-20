@@ -1,36 +1,54 @@
-require("noice").setup({
-  lsp = {
-    -- Suprascrie interfața LSP pentru a nu mai avea ferestre mari
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.styled_pa_at_cursor"] = true,
-      ["cmp.entry.get_documentation"] = true,
+return {
+  {
+    "folke/noice.nvim",
+    
+    -- 1. Verificare NixCats
+    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    
+    -- 2. Noice se încarcă de obicei cu "VeryLazy" pentru a prelua UI-ul rapid
+    event = "VeryLazy",
+
+    -- 3. Dependențe OBLIGATORII
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      -- "rcarriga/nvim-notify", -- Opțional, pentru că l-ai dezactivat în config, dar e bine de știut
     },
-  },
-  -- Dezactivăm explicit nvim-notify
-  notify = {
-    enabled = false,
-  },
-  messages = {
-    enabled = true, -- Activează gestionarea mesajelor
-    view = "mini",  -- Trimite toate mesajele (inclusiv "Theme Saved") în colț
-    view_error = "mini",
-    view_warn = "mini",
-  },
-  presets = {
-    bottom_search = true,         -- Bara de căutare jos (clasic)
-    command_palette = false,      -- NU mută bara de comenzi în centrul ecranului
-    long_message_to_split = true, -- Mesajele lungi se deschid în split, nu cu Press Enter
-  },
-  routes = {
-    {
-      -- Această regulă elimină complet mesajul "Theme Saved" dacă te deranjează chiar și în colț
-      filter = {
-        event = "msg_show",
-        kind = "",
-        find = "Theme Saved",
-      },
-      opts = { skip = true },
-    },
-  },
-})
+
+    -- 4. Configurare prin `opts` (Lazy face automat setup(opts))
+    opts = {
+        lsp = {
+            -- Suprascrie interfața LSP
+            override = {
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                ["vim.lsp.util.stylize_markdown"] = true, -- Am corectat typo-ul probabil (era styled_pa_at_cursor)
+                ["cmp.entry.get_documentation"] = true,
+            },
+        },
+        -- Dezactivăm explicit nvim-notify
+        notify = {
+            enabled = false,
+        },
+        messages = {
+            enabled = true, 
+            view = "mini",
+            view_error = "mini",
+            view_warn = "mini",
+        },
+        presets = {
+            bottom_search = true,
+            command_palette = false,
+            long_message_to_split = true,
+        },
+        routes = {
+            {
+                filter = {
+                    event = "msg_show",
+                    kind = "",
+                    find = "Theme Saved",
+                },
+                opts = { skip = true },
+            },
+        },
+    }
+  }
+}

@@ -1,44 +1,68 @@
--- Blink CMP capabilities
-local blink_status, blink = pcall(require, "blink.cmp")
-local capabilities = blink_status and blink.get_lsp_capabilities() or {}
+return {
+  {
+    "neovim/nvim-lspconfig",
+    
+    -- 1. Verificăm cu NixCats
+    enabled = require('nixCatsUtils').lazyAdd(true, false),
+    
+    -- 2. Declarăm dependența de Blink (ca să avem capabilitățile gata încărcate)
+    dependencies = { "saghen/blink.cmp" },
 
----------------------------------------
--- 1. Configurare CLANGD (C/C++)
----------------------------------------
-vim.lsp.config('clangd', {
-    cmd = { 'clangd' }, -- Am inchis acolada aici. Nu lasa virgula in interior daca e un singur element, e mai safe.
-    filetypes = { "h", "c", "cpp", "objc", "objcpp" },
-    root_markers = { '.git', 'compile_commands.json', 'compile_flags.txt' },
-    capabilities = capabilities,
-}) 
--- NOTA: La finalul functiei trebuie '})' -> o acolada pentru tabela, o paranteza pentru functie.
+    -- 3. Configurare
+    config = function()
+        -- Importăm lspconfig
+        local lspconfig = require("lspconfig")
+        
+        -- Obținem capabilitățile de la Blink (pentru autocomplete)
+        -- Blink se ocupă automat să le combine cu cele default
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
 
--- Activam serverul
-vim.lsp.enable('clangd')
+        -- ==========================================
+        -- 1. Configurare CLANGD (C/C++)
+        -- ==========================================
+        lspconfig.clangd.setup({
+            cmd = { 'clangd' },
+            -- Acestea sunt gestionate automat de lspconfig, dar le putem forța
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+            capabilities = capabilities,
+        })
 
----------------------------------------
--- 2. Configurare JDTLS (Java)
----------------------------------------
-vim.lsp.config('jdtls', {
-    cmd = { 'jdtls' },
-    -- root_markers inlocuieste root_dir in noua versiune
-    root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }, 
-    capabilities = capabilities,
-})
+        -- ==========================================
+        -- 2. Configurare JDTLS (Java)
+        -- ==========================================
+        -- Notă: Pentru Java avansat se recomandă pluginul 'nvim-jdtls', 
+        -- dar pentru început merge și așa dacă ai jdtls în PATH (din Nix).
+        lspconfig.jdtls.setup({
+            cmd = { 'jdtls' },
+            capabilities = capabilities,
+            -- root_dir este detectat automat de lspconfig pe baza pom.xml/.git
+        })
 
--- Activam serverul
-vim.lsp.enable('jdtls')
+        -- ==========================================
+        -- 3. Shortcut-uri (Keymaps) - LspAttach
+        -- ==========================================
+        -- Acest cod rulează DE FIECARE DATĂ când un server LSP se atașează la un fișier
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+            callback = function(event)
+                local opts = { buffer = event.buf }
 
----------------------------------------
--- 3. Shortcut-uri (Keymaps)
----------------------------------------
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(event)
-        local opts = { buffer = event.buf }
+                -- Helper pentru a mapa taste mai ușor
+                local map = function(keys, func, desc)
+                    vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+                end
 
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    end,
-})
+                -- Definiții și Navigare
+                map("gd", require('telescope.builtin').lsp_definitions, "[G]oto [D]efinition") -- Folosim Telescope daca il ai, sau vim.lsp.buf.definition
+                map("K", vim.lsp.buf.hover, "Hover Documentation")
+                map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+                map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+                map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+                
+                -- Dacă vrei să folosești funcțiile native (fără Telescope), decomentează:
+                -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            end,
+        })
+    end
+  }
+}

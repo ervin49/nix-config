@@ -1,23 +1,33 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-	return
-end
+return {
+  {
+    "nvim-lualine/lualine.nvim",
+    
+    -- 1. Verificare NixCats
+    enabled = require('nixCatsUtils').lazyAdd(true, false),
 
-lualine.setup {
-    options = {
-        icons_enabled = true,
-        theme = 'auto',
-        component_separators = { left = '', right = '' },
-section_separators = { left = '', right = '' },
-        always_divide_middle = true,
-        globalstatus = true,
-    },
-    sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'diff', 'diagnostics'},
-        lualine_c = {'filename'},
-        lualine_y = {},
-        lualine_x = {'filetype'},
-        lualine_z = {'location'}
-    },
+    -- 2. Dependențe (pentru iconițe)
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+
+    -- 3. Configurare
+    config = function()
+        require('lualine').setup {
+            options = {
+                icons_enabled = true,
+                theme = 'auto', -- 'auto' e cel mai sigur, preia culorile temei active
+                component_separators = { left = '', right = '' },
+                section_separators = { left = '', right = '' },
+                always_divide_middle = true,
+                globalstatus = true,
+            },
+            sections = {
+                lualine_a = {'mode'},
+                lualine_b = {'diff', 'diagnostics'},
+                lualine_c = {'filename'},
+                lualine_y = {},
+                lualine_x = {'filetype'},
+                lualine_z = {'location'}
+            },
+        }
+    end
+  }
 }
