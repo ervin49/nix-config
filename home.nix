@@ -151,7 +151,7 @@ in
     programs.alacritty = {
         enable = true;
 
-        theme = "oxocarbon";
+        theme = "tokyo_night_enhanced";
 
         settings = {
             font = {
