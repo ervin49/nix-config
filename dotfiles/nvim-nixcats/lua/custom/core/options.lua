@@ -24,12 +24,6 @@ opt.autowrite     = true       -- Auto-save before commands
 opt.smartcase     = true       -- Override ignorecase if uppercase
 opt.swapfile      = false      -- Disable swap files
 
--- Highlight / Colors
-vim.api.nvim_set_hl(0, 'my_bg',        { bg = '#000000' })
-vim.api.nvim_set_hl(0, 'my_bg_cursor', { fg = '#fabd2f', bg = '#3c3836' })
-vim.api.nvim_set_hl(0, 'LineNr',       { link = 'my_bg' })
-vim.api.nvim_set_hl(0, 'CursorLineNr', { link = 'my_bg_cursor' })
-
 -- Diagnostics
 vim.diagnostic.config {
     float = { border = "rounded" }     -- Rounded border for diagnostic popups
