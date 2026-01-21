@@ -1,10 +1,11 @@
 return {
   {
     "stevearc/oil.nvim",
-    
-    -- 1. Verificare NixCats
-    enabled = true,
-
+    cmd = "Oil",
+        ft = "oil",
+    keys =  keys = {
+        { "-", "<cmd>Oil<cr>" },
+    },
     -- 2. Dependențe (pentru iconițe)
     dependencies = { "nvim-tree/nvim-web-devicons" },
 

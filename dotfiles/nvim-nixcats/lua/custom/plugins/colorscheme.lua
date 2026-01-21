@@ -1,10 +1,6 @@
 return {
   {
     "sainnhe/gruvbox-material",
-    
-    -- 1. Verificare NixCats
-    enabled = true,
-    
     -- 2. Setări critice pentru temă
     lazy = false,    -- NU vrem lazy loading, tema trebuie să apară instant
     priority = 1000, -- Prioritate maximă (se încarcă înaintea tuturor celorlalte plugin-uri)

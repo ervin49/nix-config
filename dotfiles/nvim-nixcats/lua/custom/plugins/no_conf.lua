@@ -1,44 +1,37 @@
 return {
-    -- 1. Transparent.nvim
+    -- Transparent background
     {
         "xiyaowong/transparent.nvim",
-        enabled = true,
-        lazy = false, 
+        lazy = false,
         priority = 1000,
         config = function()
             require("transparent").setup({
                 extra_groups = {
-                    "NormalFloat", -- ferestre plutitoare
-                    "NvimTreeNormal", -- file explorer
+                    "NormalFloat",
+                    "NvimTreeNormal",
                 },
             })
-            require('transparent').clear_prefix('BufferLine')
-        end
+            require("transparent").clear_prefix("BufferLine")
+        end,
     },
 
-    -- 2. Which-Key
+    -- Which-Key
     {
         "folke/which-key.nvim",
-        enabled = true,
-        event = "VeryLazy", 
-        config = true,      
+        event = "VeryLazy",
+        config = true,
     },
 
-    -- 3. Highlighted Yank
+    -- Highlight yank
     {
         "machakann/vim-highlightedyank",
-        enabled = true,
-        -- Notă: Asigură-te că ai 'pkgs.vimPlugins.vim-highlightedyank' în flake.nix!
+        event = "VeryLazy",
     },
 
-    -- 4. Plenary (Librărie)
-    {
-        "nvim-lua/plenary.nvim",
-        enabled = true,
-        lazy = true, 
-    },
+    -- Plenary (dependency)
+    { "nvim-lua/plenary.nvim" },
 
-    -- 5. Tmux Navigator (Configurat super bine pentru lazy loading)
+    -- Tmux navigator
     {
         "christoomey/vim-tmux-navigator",
         cmd = {
@@ -49,21 +42,24 @@ return {
             "TmuxNavigatePrevious",
         },
         keys = {
-            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+            { "<C-h>", "<cmd>TmuxNavigateLeft<cr>" },
+            { "<C-j>", "<cmd>TmuxNavigateDown<cr>" },
+            { "<C-k>", "<cmd>TmuxNavigateUp<cr>" },
+            { "<C-l>", "<cmd>TmuxNavigateRight<cr>" },
+            { "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>" },
         },
     },
 
-    -- 6. Comment.nvim (Înlocuitorul modern pentru vim-commentary)
+    -- Comment.nvim
     {
         "numToStr/Comment.nvim",
-        enabled = true,
-        -- Îl încărcăm imediat sau pe event-ul "VeryLazy" ca să meargă tastele
-        event = "VeryLazy", 
-        -- Această linie face automat require("Comment").setup({})
-        opts = {}, 
+        event = "VeryLazy",
+        opts = {},
+    },
+
+    -- Disable search highlight after move
+    {
+        "romainl/vim-cool",
+        event = "VeryLazy",
     },
 }

@@ -129,6 +129,7 @@
                 tiny-inline-diagnostic-nvim
                     comment-nvim
                     vim-gitgutter
+                    vim-cool
                     harpoon2
                     blink-cmp 
                     nvim-autopairs
