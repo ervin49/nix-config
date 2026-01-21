@@ -4,6 +4,7 @@ return {
     
     -- 1. Verificare NixCats
     enabled = true,
+    cmd = "Themery",
 
     -- 2. Configurare
     config = function()

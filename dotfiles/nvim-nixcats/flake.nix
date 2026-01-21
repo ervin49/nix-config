@@ -127,13 +127,11 @@
                     vim-tmux-navigator
                     flash-nvim
                     vim-cool
-                    telescope-nvim
-                    telescope-fzf-native-nvim
             ]; 
 
             code = with pkgs.vimPlugins; [
                     tiny-inline-diagnostic-nvim
-                    vim-commentary
+                        comment-nvim
                     vim-gitgutter
                     harpoon2
                     blink-cmp 
