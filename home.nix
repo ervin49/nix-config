@@ -155,7 +155,7 @@ in
 
         settings = {
             font = {
-                size = if isDesktop then 14.0 else 16.0;
+                size = if isDesktop then 12.5 else 16.0;
                 normal = {
                     family = "0xProto";
                     style = "Regular";
