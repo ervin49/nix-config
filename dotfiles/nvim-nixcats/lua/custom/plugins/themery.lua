@@ -19,8 +19,8 @@ return {
                     ]],
                 },
                 {
-                    name = "jetbrains",
-                    colorscheme = "jb",
+                    name = "rose-pine",
+                    colorscheme = "rose-pine",
                     before = [[
                         vim.opt.background = "dark"
                     ]],

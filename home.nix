@@ -151,7 +151,7 @@ in
     programs.alacritty = {
         enable = true;
 
-        theme = "gruvbox_material_hard_dark";
+        theme = "rose_pine";
 
         settings = {
             font = {

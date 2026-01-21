@@ -23,10 +23,6 @@
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
         nixCats.url = "github:BirdeeHub/nixCats-nvim";
-        "plugins-jb-nvim" = {
-            url = "github:nickkadutskyi/jb.nvim";
-            flake = false;
-        };
 
 # neovim-nightly-overlay = {
 #   url = "github:nix-community/neovim-nightly-overlay";
@@ -106,19 +102,19 @@
         startupPlugins = {
 
             gitPlugins = with pkgs.neovimPlugins; [
-                jb-nvim
             ];
 
             theming = with pkgs.vimPlugins; [
-                    gruvbox-material
-                        snacks-nvim
-                        oil-nvim
+                gruvbox-material
+                    snacks-nvim
+                    oil-nvim
                     vim-highlightedyank
                     transparent-nvim
                     themery-nvim
                     lualine-nvim
                     noice-nvim
-		    nui-nvim
+                    nui-nvim
+                    rose-pine
             ];
 
             navigation = with pkgs.vimPlugins; [
@@ -130,19 +126,19 @@
             ]; 
 
             code = with pkgs.vimPlugins; [
-                    tiny-inline-diagnostic-nvim
-                        comment-nvim
+                tiny-inline-diagnostic-nvim
+                    comment-nvim
                     vim-gitgutter
                     harpoon2
                     blink-cmp 
                     nvim-autopairs
-                nvim-treesitter.withAllGrammars
+                    nvim-treesitter.withAllGrammars
                     which-key-nvim
-                nvim-lspconfig
+                    nvim-lspconfig
             ];
 
             lsp = with pkgs.vimPlugins; [
-                    friendly-snippets
+                friendly-snippets
             ];
 
             others = with pkgs.vimPlugins;[
