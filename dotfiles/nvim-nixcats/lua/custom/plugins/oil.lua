@@ -2,31 +2,23 @@ return {
   {
     "stevearc/oil.nvim",
     cmd = "Oil",
-        ft = "oil",
-    keys =  keys = {
-        { "-", "<cmd>Oil<cr>" },
+    keys = {
+      { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
     },
-    -- 2. Dependențe (pentru iconițe)
     dependencies = { "nvim-tree/nvim-web-devicons" },
-
-    -- 3. Configurare
     config = function()
-        require("oil").setup({
-            default_file_explorer = true, -- Înlocuiește netrw
-            columns = {
-                "icon",
-                -- "permissions",
-                -- "size",
-                -- "mtime",
-            },
-            view_options = {
-                show_hidden = true, 
-            },
-            skip_confirm_for_simple_edits = true,
-        })
+      require("oil").setup({
+        default_file_explorer = true,
+        columns = { "icon" },
+        view_options = { show_hidden = true },
+        skip_confirm_for_simple_edits = true,
+      })
 
-        -- Opțional: Mapare pentru a deschide Oil (de obicei tasta '-')
-        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      -- Dacă Neovim a fost lansat cu un director (ex: nvim .), deschide Oil automat
+      if vim.fn.isdirectory(vim.fn.expand("%:p")) == 1 then
+        vim.cmd.Oil()
+      end
     end
   }
 }
+
