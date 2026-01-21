@@ -1,4 +1,5 @@
-{
+return {
+    {
   "rachartier/tiny-inline-diagnostic.nvim",
   event = { "BufReadPost", "BufNewFile" },
   priority = 1000,
@@ -30,5 +31,6 @@
           severity_sort = true,
       })
   end
+}
 }
 
