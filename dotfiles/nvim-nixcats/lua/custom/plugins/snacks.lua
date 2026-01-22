@@ -42,6 +42,9 @@ return {
 
             -- :: Buffere
             { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
+            { "<leader>d", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+            { "<leader>D", function() Snacks.picker.diagnostics({ scope = "workspace" }) end, desc = "Workspace Diagnostics" },
+
 
 
             -- :: Terminal
