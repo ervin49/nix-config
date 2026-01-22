@@ -1,28 +1,40 @@
 return {
-    {
-        "ThePrimeagen/harpoon",
-        lazy = false,
-        config = function()
-            local harpoon = require("harpoon")
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2", -- important (Harpoon v2)
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
+    config = function()
+      local harpoon = require("harpoon")
+      harpoon:setup()
 
-            -- REQUIRED
-            harpoon:setup()
-            -- REQUIRED
+      -- Add file
+      vim.keymap.set("n", "<leader>a", function()
+        harpoon:list():append()
+      end, { desc = "Add file to Harpoon" })
 
-            local ui = require("harpoon.ui")
-            local mark = require("harpoon.mark")
+      -- Toggle quick menu
+      vim.keymap.set("n", "<C-f>", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end, { desc = "Toggle Harpoon Menu" })
 
-            -- :: Adaugă fișier în Harpoon
-            vim.keymap.set("n", "<leader>a", function() mark:add_file() end, { desc = "Add file to Harpoon" })
+      -- Jump to files
+      vim.keymap.set("n", "<C-j>", function()
+        harpoon:list():select(1)
+      end, { desc = "Harpoon File 1" })
 
-            -- :: Deschide meniul rapid Harpoon
-            vim.keymap.set("n", "<C-e>", function() ui:toggle_quick_menu() end, { desc = "Toggle Harpoon Menu" })
+      vim.keymap.set("n", "<C-k>", function()
+        harpoon:list():select(2)
+      end, { desc = "Harpoon File 2" })
 
-            -- :: Salt direct la fișierele Harpoon
-            vim.keymap.set("n", "<C-j>", function() ui:nav_file(1) end, { desc = "Harpoon File 1" })
-            vim.keymap.set("n", "<C-k>", function() ui:nav_file(2) end, { desc = "Harpoon File 2" })
-            vim.keymap.set("n", "<C-l>", function() ui:nav_file(3) end, { desc = "Harpoon File 3" })
-            vim.keymap.set("n", "<C-;>", function() ui:nav_file(4) end, { desc = "Harpoon File 4" })
-        end,
-    }
+      vim.keymap.set("n", "<C-l>", function()
+        harpoon:list():select(3)
+      end, { desc = "Harpoon File 3" })
+
+      vim.keymap.set("n", "<C-;>", function()
+        harpoon:list():select(4)
+      end, { desc = "Harpoon File 4" })
+    end,
+  },
 }
+
