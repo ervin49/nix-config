@@ -26,8 +26,8 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1769112395,
-        "narHash": "sha256-ulSOdW/uwEVG4lZTUHvMvDGNXo9Xrsm+mx8RieW9C5k=",
+        "lastModified": 1769112519,
+        "narHash": "sha256-U58AWuqqVcRyuOjV1NDDOL2K2XSvHLYaGvvo58z9mtw=",
         "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats",
         "type": "path"
       },
