@@ -48,7 +48,7 @@ return {
 
 
             -- :: Terminal
-            { "<leader>t",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+            { "<leader>t",      function() Snacks.terminal.toggle() end, desc = "Toggle Terminal" },
             init = function()
                 vim.api.nvim_create_user_command("Snacks", function(opts)
                     Snacks.picker(opts.args)
