@@ -31,14 +31,14 @@ in
             tldr
             cargo
             eza
-            inputs.my-nvim.packages.${pkgs.system}.default
+            inputs.my-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default
 #gui apps
             zathura
             dbeaver-bin
             jetbrains.clion
             vesktop
             obsidian
-            inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+            inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".twilight
             kdePackages.gwenview 
             brave
             ];
