@@ -183,6 +183,7 @@ in
         }];
         packages = [
             "eu.betterbird.Betterbird" 
+                "org.vinegarhq.Sober"
         ];
         uninstallUnmanaged = true;
         update.onActivation = true;
