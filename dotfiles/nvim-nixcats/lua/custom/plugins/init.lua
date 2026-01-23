@@ -2,7 +2,6 @@
 return {
   -- Aici importăm modulele pe care le-am creat
   require("custom.plugins.lualine"),
-  require("custom.plugins.flash"),
   require("custom.plugins.no_conf"),
   require("custom.plugins.colorscheme"),
   require("custom.plugins.snacks"),

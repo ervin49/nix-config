@@ -121,7 +121,6 @@
                 plenary-nvim        
                     nvim-web-devicons
                     vim-tmux-navigator
-                    flash-nvim
                     vim-cool
             ]; 
 
