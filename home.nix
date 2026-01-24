@@ -32,9 +32,11 @@ in
             cargo
             eza
             inputs.my-nvim.packages.${pkgs.stdenv.hostPlatform.system}.default
+
 #gui apps
             zathura
             dbeaver-bin
+            onlyoffice-desktopeditors
             jetbrains.clion
             vesktop
             obsidian
