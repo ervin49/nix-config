@@ -26,7 +26,7 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1769193962,
+        "lastModified": 1769194268,
         "narHash": "sha256-2/rzo9+jKBpiCz+uC7xfe0a+Khh/N/28EYCkdH7DWo0=",
         "path": "/home/ervin/.nix-config/dotfiles/nvim-nixcats",
         "type": "path"
@@ -117,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769189189,
-        "narHash": "sha256-JvsG6aWbVwES8++eYMqYFdoPIXYFUZl9J0DmhJ2wCWQ=",
+        "lastModified": 1769201724,
+        "narHash": "sha256-jejW3u1bkqz0ObXZeiZqLQNwC7+MXb8/KMwf3VPQpRI=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "c7197cdd02440ffbbe0a8e1fe9187c941a52ffe4",
+        "rev": "0fac05e4b604c3304e7710a95572e78350fe9968",
         "type": "github"
       },
       "original": {
