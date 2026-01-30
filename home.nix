@@ -26,6 +26,7 @@ in
             python3
             matugen
             wl-clipboard
+            baobab
             clang-tools
             jdt-language-server
             tldr
