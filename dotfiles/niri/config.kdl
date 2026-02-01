@@ -84,6 +84,7 @@ window-rule {
     match app-id=r#"^blueman-manager$"#
     match app-id=r#"^xdg-desktop-portal$"#
     match app-id=r#"^thunar$"#
+    match app-id=r#"^Thunar$"#
     open-floating true
 }
 window-rule {
