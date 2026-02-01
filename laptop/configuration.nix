@@ -25,19 +25,5 @@
             STOP_CHARGE_THRESH_BAT0 = 80;
         };
     };
-    services.keyd = {
-        enable = true;
-
-        keyboards.default = {
-            ids = [ "*" ];
-
-            settings = {
-                main = {
-                    capslock = "overload(control, escape)";
-                };
-            };
-        };
-    };
-
     system.stateVersion = "25.05"; 
 }

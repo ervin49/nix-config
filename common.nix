@@ -112,5 +112,19 @@
         KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
         '';
 
+    services.keyd = {
+        enable = true;
+
+        keyboards.default = {
+            ids = [ "*" ];
+
+            settings = {
+                main = {
+                    capslock = "overload(control, escape)";
+                };
+            };
+        };
+    };
+
     system.stateVersion = "25.05"; 
 }
