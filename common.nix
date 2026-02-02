@@ -121,6 +121,22 @@
             settings = {
                 main = {
                     capslock = "overload(control, escape)";
+                    space = "overload(nav, space)";
+                };
+                nav = {
+                    h = "left";
+                    j = "down";
+                    k = "up";
+                    l = "right";
+
+                    u = "backspace";
+                    i = "delete";
+
+                    y = "home";
+                    o = "end";
+
+                    n = "pagedown";
+                    p = "pageup";
                 };
             };
         };
