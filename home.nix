@@ -119,6 +119,7 @@ in
             nc = "nh clean all";
             nu = "cd ~/.nix-config && nh os switch . --update && ga . && gc -m \"Update: ${osConfig.networking.hostName} - $(date +'%Y-%m-%d %H:%M')\" && gp";
             n = "cd ~/.nix-config && nh os switch . && ga . && gc -m \"Rebuild: ${osConfig.networking.hostName} - $(date +'%Y-%m-%d %H:%M')\" && gp";
+            nixkali = "IN_NIX_SHELL=1 nix shell";
             ns = "nh search";
         };
         initContent = ''
