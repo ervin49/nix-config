@@ -47,8 +47,8 @@
     local white='7'
 
     function prompt_nix_shell() {
-        if [[ -n "$IN_NIX_SHELL" || -n "$NIX_SHELL" || -n "$NIX_PROFILES" || "$PATH" == */nix/store/* ]]; then
-            p10k segment -f 45 -i "❄️" -t "nix"
+        if [[ -n "$IN_NIX_SHELL" ]]; then
+            p10k segment -f 45 -t "nix"
         fi
     }
 
